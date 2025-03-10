@@ -1,169 +1,92 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Основные элементы языка HTML</title>
-  </head>
-  <body>
-    <h1>Основные элементы языка HTML</h1>
-    <hr />
 
-    <h2>1. Блочные элементы (block elements)</h2>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма</title>
+</head>
 
-    <p>
-      Некоторые элементы HTML, которые могут присутствовать внутри элемента
-      body, называются «блочными элементами» (или элементы уровня блока), в то
-      время как другие - «внутренние» (элементы уровня текста).
-    </p>
+<body>
+    <h1>Форма регистрации пользователя</h1>
+    <form action="#">
+        <table>
+            <tbody>
+                <tr>
+                    <td><label for="E-mail">E-mail</label></td>
+                    <td><input type="email" name="user_email" id="E-mail" size="25" maxlength="30"
+                            placeholder="Введите e-mail" required></td>
+                </tr>
+                <tr>
+                    <td><label for="password">Пароль</label></td>
+                    <td><input type="password" name="user_password" id="password" size="25" maxlength="30"
+                            placeholder="Введите пароль" required></td>
+                </tr>
+                <tr>
+                    <td>Пол</td>
+                    <td><input type="radio" name="user_gender" id="gender1" value="male" checked>
+                        <label for="gender1">Мужской</label>
+                        <input type="radio" name="user_gender" id="gender2" value="female">
+                        <label for="gender2">Женский</label></td>
+                </tr>
+                <tr>
+                    <td>Год рождения</td>
+                    <td><select name="select">
+                            <option value="data1">1981</option>
+                            <option value="data2">1982</option>
+                            <option value="data3">1983</option>
+                            <option value="data4">1984</option>
+                            <option value="data5">1985</option>
+                            <option value="data6">1986</option>
+                            <option value="data7">1987</option>
+                            <option value="data8">1988</option>
+                            <option value="data9">1989</option>
+                            <option value="data10">1990</option>
+                            <option value="data11">1991</option>
+                            <option value="data12">1992</option>
+                            <option value="data13">1993</option>
+                            <option value="data14">1994</option>
+                            <option value="data15">1995</option>
+                            <option value="data16">1996</option>
+                            <option value="data17">1997</option>
+                            <option value="data18">1998</option>
+                            <option value="data19">1999</option>
+                            <option value="data20">2000</option>
+                            <option value="data21">2001</option>
+                            <option value="data22">2002</option>
+                            <option value="data23">2003</option>
+                            <option value="data24">2004</option>
+                            <option value="data25">2005</option>
+                            <option value="data26">2006</option>
+                            <option value="data27">2007</option>
+                        </select>-й</td>
+                </tr>
+                <tr>
+                    <td>Я знаю</td>
+                    <td><label for="Russian"><input id="Russian" type="checkbox" checked disabled>Русский</label><br>
+                        <label for="Spanish"><input id="Spanish" type="checkbox">Испанский</label><br>
+                        <label for="Deutch"><input id="Deutch" type="checkbox">Немецкий</label><br>
+                        <label for="English"><input id="English" type="checkbox">Английский</label><br>
+                        <label for="Chinese"><input id="Chinese" type="checkbox">Китайский</label><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="bio">Обо мне</label></td>
+                    <td>
+                        <textarea id="bio" name="user_bio" cols="35" rows="8" placeholder="Напишите коротко о себе"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <button type="submit">Отправить</button>
+                        <button type="reset">Отчичтить</button>
+                    </td>
+                </tr>
 
-    <h3>1.1. Заголовки</h3>
+            </tbody>
+        </table>
+    </form>
+</body>
 
-    <p>
-      Существует шесть уровней заголовков - от h1 (наиболее важный) до h6
-      (наименее важный). Все заголовки имеют полужирное начертание и
-      вертикальные отступы. Элемент blockquote создает блок с вертикальными и
-      горизонтальными отступами. В этом элементе могут содержаться как строчные,
-      так и блочные элементы.
-    </p>
-
-    <blockquote>
-      <h1>Заголовок 1 уровня</h1>
-      <h2>Заголовок 2 уровня</h2>
-      <h3>Заголовок 3 уровня</h3>
-      <h4>Заголовок 4 уровня</h4>
-      <h5>Заголовок 5 уровня</h5>
-      <h6>Заголовок 6 уровня</h6>
-    </blockquote>
-
-    <h3>1.2. Элементы p и div</h3>
-
-    <div>
-      <p>
-        Элемент p создает параграф. В нем не могут содержаться элементы уровня
-        блока (включая и сам элемент p). Также нежелательно использовать пустой
-        элемент p, так как браузеры игнорируют пустые элементы p.
-      </p>
-
-      <p>
-        Элемент p добавляет вертикальный отступ перед и после абзаца.
-        Применяется параграф для облегчения чтения текста и логической
-        группировки связанных по смыслу предложений.
-      </p>
-
-      <p>
-        Элемент div может содержать как внутренние элементы, так и блочные и
-        применяется для структурного разделения документа. Крайне часто
-        применяется при верстке страниц с применением CSS, что дало ей
-        определение «блочная».
-      </p>
-
-      <p>
-        Наряду с элементом в будущем div будет часто использоваться элемент span
-        для форматирования частей строк.
-      </p>
-    </div>
-
-    <h3>1.3. Форматирование текста с помощью элемента pre</h3>
-
-    <pre>
-          ____
-        o8%8888,
-      o88%8888888.
-     8'-    -:8888b
-    8'         8888
-   d8.-=. ,==-.:888b
-   >8 `~` :`~' d8888
-   88         ,88888
-   88b. `-~  ':88888
-   888b ~==~ .:88888
-   88888o--:':::8888
-   `88888| :::' 8888b
-   8888^^'       8888b
-  d888           ,%888b.
- d88%            %%%8--'-.
-/88:.__ ,       _%-' ---  -
-    '''::===..-'   =  --.  `
-</pre
-    >
-
-    <h2>2. Подстановки</h2>
-
-    <p>
-      Подстановки используются в тех случаях, когда использование обычных
-      символов невозможно, либо нужно заменить признак тега на графические
-      символы угловых скобок. В тексте обязательной замене подлежат открывающая
-      угловая скобка и амперсанд. Желательно заменять закрывающую угловую
-      скобку, одиночные и двойные кавычки.
-    </p>
-
-    <p>Основные подстановки:</p>
-    <ul>
-      <li>&lt; (открывающая угловая скобка)</li>
-      <li>&gt; (закрывающая угловая скобка)</li>
-      <li>&quot; (двойная кавычка)</li>
-      <li>&apos; (одиночная кавычка)</li>
-      <li>&amp; (амперсанд)</li>
-    </ul>
-
-    <p>Пример: фрагмент кода</p>
-
-    <pre><code>
-&lt;h2 class=&quot;center&quot;&gt;
-Голландская фирма Horns&amp;Hoofs запустила online-магазин
-&lt;/h2&gt;
-</code></pre>
-
-    <h2>3. Элементы строчного уровня (inline elements)</h2>
-
-    <h3>3.1. Непосредственное и логическое форматирование текста</h3>
-
-    <h4>
-      3.1.1. Изменение размера и положения текста с помощью элементов sub и sup
-    </h4>
-
-    <p>Формула расчета энергии: E = mc<sup>2</sup></p>
-    <p>Химическая формула воды: H<sub>2</sub>O</p>
-
-    <h4>3.1.2. Изменение начертания и гарнитуры</h4>
-
-    <p>
-      <i
-        >i: Используется для текста, который по разным причинам отличается от
-        обычного текста</i
-      >
-    </p>
-    <p>
-      <b
-        >b: Используется для привлечения внимания к тексту, не указывая на то,
-        что это более важно</b
-      >
-    </p>
-    <p>
-      <u
-        >u: Используется для разметки текста, который должен отличаться
-        стилистически от обычного текста</u
-      >
-    </p>
-
-    <h4>3.1.3. Смысловые элементы («phrase elements»)</h4>
-
-    <p>
-      <em
-        >em: Предназначен для текста, имеющего особое значение или на который
-        следует сделать акцент</em
-      >
-    </p>
-    <p>
-      <strong
-        >strong: Элемент сильной значимости указывает на то, что его содержание
-        имеет большое значение, серьезность или срочность</strong
-      >
-    </p>
-    <p><cite>cite: Цитата или ссылка на другие ресурсы</cite></p>
-    <p><code>code: Фрагмент компьютерного кода</code></p>
-
-    <hr />
-
-    <p>Перепечатка материала не преследуется по закону</p>
-  </body>
 </html>
