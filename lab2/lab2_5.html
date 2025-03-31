@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 300px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .form-group label {
+            width: 150px;
+            font-size: 14px;
+            margin-right: 10px;
+        }
+        .form-group input[type="text"], .form-group input[type="email"], .form-group input[type="password"], .form-group textarea {
+            width: calc(100% - 160px);
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .form-group input[type="radio"], .form-group input[type="checkbox"] {
+            margin-right: 10px;
+        }
+        .buttons {
+            text-align: center;
+        }
+        .buttons button {
+            padding: 10px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Форма регистрации пользователя</h1>
+        <form action="#" method="POST">
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="email" id="email" name="email" placeholder="Введите e-mail" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Пароль</label>
+                <input type="password" id="password" name="password" placeholder="Введите пароль" required>
+            </div>
+            <div class="form-group">
+                <label>Пол</label>
+                <div>
+                    <label>
+                    <input type="radio" id="male" name="gender" value="male" checked> Мужчина
+                    </label>
+                    <label>
+                    <input type="radio" id="female" name="gender" value="female"> Женщина
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="birth-year">Год рождения</label>
+                <select id="birth-year" name="birth-year" required>
+                <option value="">Выберите год</option>
+                <option value="1981">1981</option>
+                <option value="1982">1982</option>
+                <option value="1983">1983</option>
+                <option value="1984">1984</option>
+                <option value="1985">1985</option>
+                <option value="1986">1986</option>
+                <option value="1987">1987</option>
+                <option value="1988">1988</option>
+                <option value="1989">1989</option>
+                <option value="1990">1990</option>
+                <option value="1991">1991</option>
+                <option value="1992">1992</option>
+                <option value="1993">1993</option>
+                <option value="1994">1994</option>
+                <option value="1995">1995</option>
+                <option value="1996">1996</option>
+                <option value="1997">1997</option>
+                <option value="1998">1998</option>
+                <option value="1999">1999</option>
+                <option value="2000">2000</option>
+                <option value="2001">2001</option>
+                <option value="2002">2002</option>
+                <option value="2003">2003</option>
+                <option value="2004">2004</option>
+                <option value="2005">2005</option>
+                <option value="2006">2006</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Я знаю</label>
+                <div>
+                    <label>
+                    <input type="checkbox" name="language" value="russian" checked disabled> Русский
+                    </label>
+                    <label>
+                    <input type="checkbox" name="language" value="spanish"> Испанский
+                    </label>
+                    <label>
+                    <input type="checkbox" name="language" value="german"> Немецкий
+                    </label>
+                    <label>
+                    <input type="checkbox" name="language" value="english"> Английский
+                    </label>
+                    <label>
+                    <input type="checkbox" name="language" value="chinese"> Китайский
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="about">Напишите коротко о себе</label>
+                <textarea id="about" name="about" rows="4" placeholder="Напишите коротко о себе"></textarea>
+            </div>
+            <div class="buttons">
+                <button type="submit">Готово</button>
+                <button type="reset">Очистить</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
