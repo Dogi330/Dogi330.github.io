@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Использование iframe</title>
+    <style>
+        h1{
+            text-align: center;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+        }
+        figure {
+            width: 50%;
+            margin: 20px 0;
+        }
+        iframe {
+            border: 0;
+            width: 100%;
+            height: 315px;
+        }
+        .tag {
+		    color: navy;
+		}
+		.attribute {
+		    color: #e6550d;
+		}
+    </style>
+</head>
+<body>
+
+    <h1>Видео и карта</h1>
+
+    <figure>
+        <figcaption>Это видео - YouTube.</figcaption>
+        <span class="tag">
+            <iframe src="https://www.youtube.com/embed/t6NIAlyQ15k" allowfullscreen></iframe>
+        
+        </span>
+    </figure>
+
+    <figure>
+        <figcaption>Карта, показывающая местоположение Орла</figcaption>
+        <span class="attribute">
+        <iframe src="https://yandex.ru/map-widget/v1/-/CCQvFVDAMT" allowfullscreen></iframe>
+        </span>
+    </figure>
+
+</body>
+</html>
