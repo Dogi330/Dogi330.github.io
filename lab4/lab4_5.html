@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+		<meta charset="UTF-8">
+		<title>Оформление вертикального меню</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <style>
+			html {
+					background: #f0f0f0;
+			}
+			
+			.menu {
+					width: 240px;
+					background: #fff;
+			}
+			
+			.menu ul {
+					list-style-type: none;
+			}
+			
+			
+			.menu li a {
+					color: rgba(34, 105, 146, 0.897);
+                    
+			}
+			
+			.menu li:hover ul{
+					display: block;
+			}
+			
+			.menu li ul {
+                display: none;
+                position: relative;
+					top: 0;
+                    width: 150px;
+			}
+			
+			.menu li i {
+                position: absolute;
+                margin-left: -20px;
+                color: black;
+			}
+            .menu li .icon-minus{
+                display: none;
+            }
+            .menu li:hover .icon-plus{
+                display: none;
+            }
+            .menu li:hover .icon-minus{
+                display: inline;
+            }
+	</style>
+</head>
+<body>
+    <nav class="menu">
+		<ul>
+			<li><a href="#">
+                <i class="fa-regular fa-square-plus icon-plus"></i>
+                    <i class="fa-regular fa-square-minus icon-minus">
+                </i>Фильмы</a>
+				<ul>
+					<li><a href="#"><i class="fa-regular fa-circle-dot"></i>Экшн</a></li>
+					<li><a href="#"><i class="fa-regular fa-circle-dot"></i>Мелодрамы</a></li>
+					<li><a href="#"><i class="fa-regular fa-circle-dot"></i>Сериалы</a></li>
+					<li><a href="#"><i class="fa-regular fa-circle-dot"></i>Семейные</a></li>
+				</ul>
+			</li>
+			<li><a href="#"><i class="fa-regular fa-square-plus icon-plus"></i>
+                <i class="fa-regular fa-square-minus icon-minus"></i>Музыка</a>
+				<ul>
+					<li><a href="#"><i class="fa-regular fa-circle-dot"></i>Классика</a></li>
+					<li><a href="#"><i class="fa-regular fa-circle-dot"></i>Джаз</a></li>
+					<li><a href="#"><i class="fa-regular fa-circle-dot"></i>Рок</a></li>
+					<li><a href="#"><i class="fa-regular fa-circle-dot"></i>Грандж</a></li>
+				</ul>
+			</li>
+			<li><a href="#"><i class="fa-regular fa-square-plus icon-plus"></i>
+                <i class="fa-regular fa-square-minus icon-minus"></i>Софт</a>
+				<ul>
+					<li><a href="#"><i class="fa-regular fa-circle-dot"></i>Графика</a></li>
+					<li><a href="#"><i class="fa-regular fa-circle-dot"></i>3D-моделирование</a></li>
+					<li><a href="#"><i class="fa-regular fa-circle-dot"></i>Машинопись</a></li>
+					<li><a href="#"><i class="fa-regular fa-circle-dot"></i>Переводчики</a></li>
+				</ul>
+			</li>
+			<li><a href="#"><i class="fa-regular fa-square-plus icon-plus"></i>
+                <i class="fa-regular fa-square-minus icon-minus"></i>Игры</a>
+				<ul>
+					<li><a href="#"><i class="fa-regular fa-circle-dot"></i>РПГ</a></li>
+					<li><a href="#"><i class="fa-regular fa-circle-dot"></i>Шутеры</a></li>
+					<li><a href="#"><i class="fa-regular fa-circle-dot"></i>Пасьянсы</a></li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+</body>
+</html>
