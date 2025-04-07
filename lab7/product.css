@@ -35,24 +35,35 @@
   position: absolute;
   right: 10%;
   bottom: -30%;
-  width: 300px;
-  height: 540px;
-  background-color: #333;
-  border-radius: 21px;
-  transform: rotateY(30deg) rotate(30deg); 
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); 
+  width: 320px; /* Немного увеличим ширину */
+  height: 580px; /* И высоту */
+  background-color: #4e4e4e; /* Темно-серый цвет */
+  border-radius: 30px; /* Закругленные углы */
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), inset 0 0 10px rgba(255, 255, 255, 0.2); /* Внешняя и внутренняя тень */
+  transform: rotateY(15deg) rotate(15deg); /* Делаем 3D-вращение по оси Y */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Плавный переход при наведении */
+}
+
+.product-device:hover {
+  transform: rotateY(0deg) rotate(15deg) scale(1.05); /* Увеличение и выравнивание устройства при наведении */
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6); /* Увеличенная тень при наведении */
 }
 
 .product-device::before {
   position: absolute;
-  top: 10%;
-  right: 10px;
-  bottom: 10%;
-  left: 10px;
+  top: 5%; /* Уменьшаем отступ сверху */
+  right: 5px;
+  bottom: 5%;
+  left: 5px;
   content: "";
-  background-color: rgba(255, 255, 255, .1);
-  border-radius: 5px;
-  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.2); 
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3)); /* Градиент для стекла */
+  border-radius: 20px; /* Закругленные углы */
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4); /* Внутренняя тень на стекле */
+  transition: background 0.3s; /* Плавный переход для фона */
+}
+
+.product-device::before:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.5)); /* Увеличиваем насыщенность градиента при наведении */
 }
 
 .product-device-2 {
