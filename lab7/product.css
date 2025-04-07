@@ -1,24 +1,34 @@
 .container {
   max-width: 960px;
+  perspective: 1000px; /* Позволяет создать эффект 3D */
 }
 
 .icon-link > .bi {
   width: .75em;
   height: .75em;
+  transition: transform 0.3s; /* Добавляем эффект при наведении */
+}
+
+.icon-link > .bi:hover {
+  transform: scale(1.2) rotateY(10deg); /* Увеличение и вращение иконки при наведении */
 }
 
 .site-header {
   background-color: rgba(0, 0, 0, .85);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   backdrop-filter: saturate(180%) blur(20px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Тень для заголовка */
 }
+
 .site-header a {
   color: #8e8e8e;
-  transition: color .15s ease-in-out;
+  transition: color .15s ease-in-out, text-shadow .15s ease-in-out; /* Изменяем текстовую тень при наведении */
 }
+
 .site-header a:hover {
   color: #fff;
   text-decoration: none;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.7); /* Эффект свечения текста */
 }
 
 .product-device {
@@ -29,7 +39,8 @@
   height: 540px;
   background-color: #333;
   border-radius: 21px;
-  transform: rotate(30deg);
+  transform: rotateY(30deg) rotate(30deg); /* Добавляем 3D-поворот устройства */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Тень для устройства */
 }
 
 .product-device::before {
@@ -41,6 +52,7 @@
   content: "";
   background-color: rgba(255, 255, 255, .1);
   border-radius: 5px;
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.2); /* Внутренняя тень для стекла устройства */
 }
 
 .product-device-2 {
@@ -49,18 +61,27 @@
   bottom: 0;
   left: 5%;
   background-color: #e5e5e5;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Тень для второго устройства */
 }
-
 
 .flex-equal > * {
   flex: 1;
 }
+
+/* Медиазапрос для больших экранов */
 @media (min-width: 768px) {
   .flex-md-equal > * {
     flex: 1;
   }
 }
-img{
+
+img {
   width: 100%; 
   height: 100%;
+  border-radius: 10px; /* Закругление углов изображений */
+  transition: transform 0.3s; /* Добавляем эффект при наведении */
+}
+
+img:hover {
+  transform: scale(1.05); /* Увеличение изображения при наведении */
 }
