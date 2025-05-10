@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dragon - Official Music</title>
+    <title>DRAGERON DIABLOC - Official Music</title>
     <style>
         /* Основные стили */
         * {
@@ -193,6 +193,44 @@
             color: #666;
         }
         
+        /* Трек-лист */
+        .track-list {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            background: #333;
+        }
+        
+        .light-theme .track-list {
+            background: #f0f0f0;
+        }
+        
+        .playlist-card.active .track-list {
+            max-height: 1000px;
+        }
+        
+        .track-item {
+            padding: 10px 20px;
+            border-bottom: 1px solid #444;
+            cursor: pointer;
+        }
+        
+        .light-theme .track-item {
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .track-item:hover {
+            background: #444;
+        }
+        
+        .light-theme .track-item:hover {
+            background: #e0e0e0;
+        }
+        
+        .track-title {
+            font-size: 0.9rem;
+        }
+        
         /* Аудиоплеер */
         .player-container {
             position: fixed;
@@ -289,11 +327,11 @@
     
     <!-- Главный экран -->
     <section class="hero">
-        <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Драгор" class="artist-image">
+        <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="DRAGERON DIABLOC" class="artist-image">
         <div class="hero-content">
-            <h1>Драгор</h1>
-            <p>Погрузитесь в мир эпической симфонической музыки</p>
-            <a href="#playlists" class="btn">Мои плейлисты</a>
+            <h1>DRAGERON DIABLOC</h1>
+            <p>Эпическая симфоническая музыка с элементами электроники</p>
+            <a href="#playlists" class="btn">Мои альбомы</a>
         </div>
     </section>
     
@@ -301,24 +339,63 @@
     <section class="playlists" id="playlists">
         <h2 class="section-title">Альбомы</h2>
         <div class="playlist-grid">
-            <!-- Плейлист 1 -->
-            <div class="playlist-card" onclick="showPlayer('Apocalypse Symphony', 'Драгор', 'music/Apocalypse Symphony.mp3', 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">
+            <!-- Альбом 1 -->
+            <div class="playlist-card" onclick="togglePlaylist(this)">
                 <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Collection of Times of Dreams" class="playlist-cover">
                 <div class="playlist-info">
                     <h3 class="playlist-title">Collection of Times of Dreams</h3>
-                    <p class="playlist-description">Apocalypse Symphony, Apocalypse</p>
+                    <p class="playlist-description">21 трек · DRAGERON DIABLOC</p>
+                </div>
+                <div class="track-list">
+                    <div class="track-item" onclick="showPlayer('Apocalypse Symphony', 'DRAGERON DIABLOC', 'music/Apocalypse Symphony.mp3', 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">Apocalypse Symphony</div>
+                    <div class="track-item" onclick="showPlayer('Apocalypse Symphony REMIX I', 'DRAGERON DIABLOC', 'music/Apocalypse Symphony REMIX I.mp3', 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">Apocalypse Symphony REMIX I</div>
+                    <div class="track-item" onclick="showPlayer('Apocalypse Symphony REMIX II', 'DRAGERON DIABLOC', 'music/Apocalypse Symphony REMIX II.mp3', 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">Apocalypse Symphony REMIX II</div>
+                    <div class="track-item" onclick="showPlayer('Apocalypse Symphony REMIX III', 'DRAGERON DIABLOC', 'music/Apocalypse Symphony REMIX III.mp3', 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">Apocalypse Symphony REMIX III</div>
+                    <div class="track-item" onclick="showPlayer('Chains of Steel', 'DRAGERON DIABLOC', 'music/Chains of Steel.mp3', 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">Chains of Steel</div>
+                    <div class="track-item" onclick="showPlayer('Chains of Steel REMIX', 'DRAGERON DIABLOC', 'music/Chains of Steel REMIX.mp3', 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">Chains of Steel REMIX</div>
+                    <div class="track-item" onclick="showPlayer('Clash of the Blades', 'DRAGERON DIABLOC', 'music/Clash of the Blades.mp3', 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">Clash of the Blades</div>
+                    <div class="track-item" onclick="showPlayer('Clash of the Blades REMIX', 'DRAGERON DIABLOC', 'music/Clash of the Blades REMIX.mp3', 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">Clash of the Blades REMIX</div>
+                    <div class="track-item" onclick="showPlayer('Dance of the Apocalypse', 'DRAGERON DIABLOC', 'music/Dance of the Apocalypse.mp3', 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">Dance of the Apocalypse</div>
+                    <div class="track-item" onclick="showPlayer('Dance of the Apocalypse REMIX', 'DRAGERON DIABLOC', 'music/Dance of the Apocalypse REMIX.mp3', 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">Dance of the Apocalypse REMIX</div>
+                    <div class="track-item" onclick="showPlayer('End of Days Symphony', 'DRAGERON DIABLOC', 'music/End of Days Symphony.mp3', 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">End of Days Symphony</div>
+                    <div class="track-item" onclick="showPlayer('End of Days Symphony REMIX', 'DRAGERON DIABLOC', 'music/End of Days Symphony REMIX.mp3', 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">End of Days Symphony REMIX</div>
+                    <div class="track-item" onclick="showPlayer('The Final Horizon', 'DRAGERON DIABLOC', 'music/The Final Horizon.mp3', 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">The Final Horizon</div>
+                    <div class="track-item" onclick="showPlayer('The Final Horizon REMIX', 'DRAGERON DIABLOC', 'music/The Final Horizon REMIX.mp3', 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">The Final Horizon REMIX</div>
+                    <div class="track-item" onclick="showPlayer('Untitled', 'DRAGERON DIABLOC', 'music/Untitled.mp3', 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">Untitled</div>
+                    <div class="track-item" onclick="showPlayer('Untitled REMIX I', 'DRAGERON DIABLOC', 'music/Untitled REMIX I.mp3', 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">Untitled REMIX I</div>
+                    <div class="track-item" onclick="showPlayer('Untitled REMIX II', 'DRAGERON DIABLOC', 'music/Untitled REMIX II.mp3', 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">Untitled REMIX II</div>
+                    <div class="track-item" onclick="showPlayer('Untitled REMIX III', 'DRAGERON DIABLOC', 'music/Untitled REMIX III.mp3', 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">Untitled REMIX III</div>
+                    <div class="track-item" onclick="showPlayer('Untitled REMIX IV', 'DRAGERON DIABLOC', 'music/Untitled REMIX IV.mp3', 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">Untitled REMIX IV</div>
+                    <div class="track-item" onclick="showPlayer('Untitled REMIX V', 'DRAGERON DIABLOC', 'music/Untitled REMIX V.mp3', 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">Untitled REMIX V</div>
                 </div>
             </div>
             
-            <!-- Плейлист 2 -->
-            <div class="playlist-card" onclick="showPlayer('Symphony', 'Драгор', 'music/Symphony.mp3', 'https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">
+            <!-- Альбом 2 -->
+            <div class="playlist-card" onclick="togglePlaylist(this)">
                 <img src="https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Dying Galaxies & Fallen Worlds" class="playlist-cover">
                 <div class="playlist-info">
                     <h3 class="playlist-title">Dying Galaxies & Fallen Worlds</h3>
-                    <p class="playlist-description">Symphony, hony</p>
+                    <p class="playlist-description">16 треков · DRAGERON DIABLOC</p>
+                </div>
+                <div class="track-list">
+                    <div class="track-item" onclick="showPlayer('Fallen Worlds REMIX', 'DRAGERON DIABLOC', 'music/Fallen Worlds REMIX.mp3', 'https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">Fallen Worlds REMIX</div>
+                    <div class="track-item" onclick="showPlayer('Fallen Worlds', 'DRAGERON DIABLOC', 'music/Fallen Worlds.mp3', 'https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">Fallen Worlds</div>
+                    <div class="track-item" onclick="showPlayer('GALACTIC HOUSE HARDCORE REMIX', 'DRAGERON DIABLOC', 'music/GALACTIC HOUSE HARDCORE REMIX.mp3', 'https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">GALACTIC HOUSE HARDCORE REMIX</div>
+                    <div class="track-item" onclick="showPlayer('GALACTIC HOUSE HARDCORE', 'DRAGERON DIABLOC', 'music/GALACTIC HOUSE HARDCORE.mp3', 'https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">GALACTIC HOUSE HARDCORE</div>
+                    <div class="track-item" onclick="showPlayer('GALACTIC HOUSE REMIX', 'DRAGERON DIABLOC', 'music/GALACTIC HOUSE REMIX.mp3', 'https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">GALACTIC HOUSE REMIX</div>
+                    <div class="track-item" onclick="showPlayer('GALACTIC HOUSE', 'DRAGERON DIABLOC', 'music/GALACTIC HOUSE.mp3', 'https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">GALACTIC HOUSE</div>
+                    <div class="track-item" onclick="showPlayer('LAW OF BLOOD REMIX', 'DRAGERON DIABLOC', 'music/LAW OF BLOOD REMIX.mp3', 'https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">LAW OF BLOOD REMIX</div>
+                    <div class="track-item" onclick="showPlayer('LAW OF BLOOD', 'DRAGERON DIABLOC', 'music/LAW OF BLOOD.mp3', 'https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">LAW OF BLOOD</div>
+                    <div class="track-item" onclick="showPlayer('Neon Temples REMIX', 'DRAGERON DIABLOC', 'music/Neon Temples REMIX.mp3', 'https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">Neon Temples REMIX</div>
+                    <div class="track-item" onclick="showPlayer('Neon Temples', 'DRAGERON DIABLOC', 'music/Neon Temples.mp3', 'https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">Neon Temples</div>
+                    <div class="track-item" onclick="showPlayer('The hired life REMIX', 'DRAGERON DIABLOC', 'music/The hired life REMIX.mp3', 'https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">The hired life REMIX</div>
+                    <div class="track-item" onclick="showPlayer('The hired life', 'DRAGERON DIABLOC', 'music/The hired life.mp3', 'https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">The hired life</div>
+                    <div class="track-item" onclick="showPlayer('The year was 2642 REMIX', 'DRAGERON DIABLOC', 'music/The year was 2642 REMIX.mp3', 'https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">The year was 2642 REMIX</div>
+                    <div class="track-item" onclick="showPlayer('The year was 2642', 'DRAGERON DIABLOC', 'music/The year was 2642.mp3', 'https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">The year was 2642</div>
+                    <div class="track-item" onclick="showPlayer('THE NEON VIRUS REMIX', 'DRAGERON DIABLOC', 'music/THE NEON VIRUS REMIX.mp3', 'https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">THE NEON VIRUS REMIX</div>
+                    <div class="track-item" onclick="showPlayer('THE NEON VIRUS X', 'DRAGERON DIABLOC', 'music/THE NEON VIRUS X.mp3', 'https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">THE NEON VIRUS X</div>
                 </div>
             </div>
-            
             <!-- Плейлист 3 -->
             <div class="playlist-card" onclick="showPlayer('Sy', 'Драгор', 'music/Sy.mp3', 'https://images.unsplash.com/photo-1454789548928-9efd52dc4031?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">
                 <img src="https://images.unsplash.com/photo-1454789548928-9efd52dc4031?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Holy War" class="playlist-cover">
