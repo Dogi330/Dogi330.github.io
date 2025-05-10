@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ГИМН МЕЧЕЙ - Аудиоплеер</title>
+    <title>Музыкальный плеер</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,9 +12,10 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
             flex-direction: column;
+            padding: 20px;
         }
         .player {
             background: #333;
@@ -22,7 +23,8 @@
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
             padding: 25px;
             text-align: center;
-            max-width: 300px;
+            max-width: 320px;
+            width: 100%;
         }
         .cover-container {
             width: 200px;
@@ -43,7 +45,7 @@
         .title {
             font-size: 20px;
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
         .artist {
             color: #aaa;
@@ -57,6 +59,7 @@
             display: flex;
             justify-content: center;
             gap: 10px;
+            margin-bottom: 15px;
         }
         button {
             background: #4CAF50;
@@ -70,18 +73,31 @@
         button:hover {
             background: #45a049;
         }
+        select {
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            background: #444;
+            color: white;
+            border: 1px solid #555;
+        }
     </style>
 </head>
 <body>
     <div class="player">
         <div class="cover-container">
-            <img id="cover" alt="Обложка трека">
+            <img id="cover" src="placeholder.jpg" alt="Обложка трека">
         </div>
-        <div class="title" id="title">ГИМН МЕЧЕЙ</div>
+        <div class="title" id="title">Название трека</div>
         <div class="artist" id="artist">Исполнитель</div>
         
+        <select id="track-selector">
+            <option value="">Выберите трек</option>
+            <!-- Треки будут загружены через JS -->
+        </select>
+        
         <audio id="audio" controls>
-            <source src="hymn-mechey.mp3" type="audio/mpeg">
             Ваш браузер не поддерживает аудио.
         </audio>
         
@@ -97,34 +113,55 @@
             const cover = document.getElementById('cover');
             const title = document.getElementById('title');
             const artist = document.getElementById('artist');
+            const trackSelector = document.getElementById('track-selector');
             
-            // Загрузка файла и извлечение метаданных
-            fetch('ГИМН МЕЧЕЙ.mp3')
-                .then(response => response.blob())
-                .then(blob => {
-                    const url = URL.createObjectURL(blob);
-                    audio.src = url;
-                    
-                    // Используем jsmediatags для чтения ID3-тегов
-                    const jsmediatags = window.jsmediatags;
-                    if (jsmediatags) {
-                        jsmediatags.read(blob, {
-                            onSuccess: function(tag) {
-                                // Извлекаем обложку
-                                if (tag.tags.picture) {
-                                    const base64String = arrayBufferToBase64(tag.tags.picture.data);
-                                    cover.src = `data:${tag.tags.picture.format};base64,${base64String}`;
+            // Список треков (можно заменить на автоматическое сканирование папки, если используется сервер)
+            const tracks = [
+                { name: "ГИМН МЕЧЕЙ", file: "music/hymn-mechey.mp3" },
+                { name: "Другой трек", file: "music/another-track.mp3" },
+                // Добавьте другие треки вручную или автоматически (см. пояснения ниже)
+            ];
+            
+            // Заполняем выпадающий список
+            tracks.forEach(track => {
+                const option = document.createElement('option');
+                option.value = track.file;
+                option.textContent = track.name;
+                trackSelector.appendChild(option);
+            });
+            
+            // При выборе трека загружаем его
+            trackSelector.addEventListener('change', function() {
+                const selectedTrack = this.value;
+                if (!selectedTrack) return;
+                
+                audio.src = selectedTrack;
+                audio.load();
+                
+                // Пытаемся извлечь обложку и метаданные
+                fetch(selectedTrack)
+                    .then(response => response.blob())
+                    .then(blob => {
+                        const jsmediatags = window.jsmediatags;
+                        if (jsmediatags) {
+                            jsmediatags.read(blob, {
+                                onSuccess: function(tag) {
+                                    if (tag.tags.picture) {
+                                        const base64String = arrayBufferToBase64(tag.tags.picture.data);
+                                        cover.src = `data:${tag.tags.picture.format};base64,${base64String}`;
+                                    }
+                                    if (tag.tags.title) title.textContent = tag.tags.title;
+                                    if (tag.tags.artist) artist.textContent = tag.tags.artist;
+                                },
+                                onError: function(error) {
+                                    console.error('Ошибка чтения тегов:', error);
+                                    title.textContent = trackSelector.options[trackSelector.selectedIndex].text;
+                                    artist.textContent = "Неизвестный исполнитель";
                                 }
-                                // Извлекаем название и исполнителя
-                                if (tag.tags.title) title.textContent = tag.tags.title;
-                                if (tag.tags.artist) artist.textContent = tag.tags.artist;
-                            },
-                            onError: function(error) {
-                                console.error('Ошибка чтения тегов:', error);
-                            }
-                        });
-                    }
-                });
+                            });
+                        }
+                    });
+            });
             
             // Вспомогательная функция для конвертации ArrayBuffer в Base64
             function arrayBufferToBase64(buffer) {
@@ -142,3 +179,4 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.7/jsmediatags.min.js"></script>
 </body>
 </html>
+
