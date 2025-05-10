@@ -195,107 +195,12 @@
         }
         
         /* Стили для списка треков */
-        .album-container {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 2000;
-            overflow-y: auto;
-            padding: 40px 20px;
-        }
-        
-        .light-theme .album-container {
-            background: rgba(255, 255, 255, 0.95);
-        }
-        
-        .album-content {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-        }
-        
-        .album-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 30px;
-            gap: 30px;
-        }
-        
-        .album-cover {
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 10px;
-        }
-        
-        .album-info {
-            flex: 1;
-        }
-        
-        .album-title {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-        
-        .album-artist {
-            font-size: 1.2rem;
-            color: #b3b3b3;
-            margin-bottom: 15px;
-        }
-        
-        .light-theme .album-artist {
-            color: #666;
-        }
-        
-        .album-nav {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-        
-        .album-nav-btn {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            padding: 10px 20px;
-        }
-        
-        .light-theme .album-nav-btn {
-            color: #333;
-        }
-        
-        .album-nav-btn:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-        }
-        
-        .close-album {
-            position: absolute;
-            top: 0;
-            right: 0;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 2rem;
-            cursor: pointer;
-        }
-        
-        .light-theme .close-album {
-            color: #333;
-        }
-        
         .track-list {
-            max-height: 400px;
+            display: none;
+            max-height: 300px;
             overflow-y: auto;
             background: #333;
             padding: 10px;
-            border-radius: 10px;
         }
         
         .light-theme .track-list {
@@ -306,9 +211,6 @@
             padding: 10px;
             border-bottom: 1px solid #444;
             cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
         
         .light-theme .track-item {
@@ -321,55 +223,6 @@
         
         .light-theme .track-item:hover {
             background: #e0e0e0;
-        }
-        
-        .track-number {
-            margin-right: 15px;
-            color: #b3b3b3;
-            width: 30px;
-        }
-        
-        .light-theme .track-number {
-            color: #666;
-        }
-        
-        .track-name {
-            flex: 1;
-        }
-        
-        /* Поиск */
-        .search-container {
-            max-width: 1200px;
-            margin: 0 auto 30px;
-            position: relative;
-        }
-        
-        .search-input {
-            width: 100%;
-            padding: 12px 20px;
-            border-radius: 30px;
-            border: none;
-            background: #333;
-            color: white;
-            font-size: 1rem;
-        }
-        
-        .light-theme .search-input {
-            background: #e0e0e0;
-            color: #333;
-        }
-        
-        .search-input:focus {
-            outline: none;
-            box-shadow: 0 0 0 2px #1DB954;
-        }
-        
-        .search-icon {
-            position: absolute;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #b3b3b3;
         }
         
         /* Аудиоплеер */
@@ -445,6 +298,55 @@
             color: #333;
         }
         
+        /* Поиск */
+        .search-container {
+            max-width: 1200px;
+            margin: 0 auto 30px;
+            padding: 0 20px;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 30px;
+            border: none;
+            background: #333;
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .light-theme .search-input {
+            background: #e0e0e0;
+            color: #333;
+        }
+        
+        /* Кнопки управления плеером */
+        .player-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .repeat-btn {
+            background: none;
+            border: none;
+            color: #b3b3b3;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .repeat-btn.active {
+            color: #1DB954;
+        }
+        
+        .light-theme .repeat-btn {
+            color: #666;
+        }
+        
+        .light-theme .repeat-btn.active {
+            color: #1DB954;
+        }
+        
         /* Адаптивность */
         @media (max-width: 768px) {
             .hero h1 {
@@ -458,17 +360,6 @@
             
             audio {
                 width: 100%;
-            }
-            
-            .album-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 15px;
-            }
-            
-            .album-cover {
-                width: 150px;
-                height: 150px;
             }
         }
     </style>
@@ -493,315 +384,419 @@
         
         <!-- Поиск -->
         <div class="search-container">
-            <input type="text" class="search-input" id="searchInput" placeholder="Поиск треков...">
-            <span class="search-icon">🔍</span>
+            <input type="text" class="search-input" id="searchInput" placeholder="Поиск треков и альбомов...">
         </div>
         
         <div class="playlist-grid">
-            <!-- Плейлист 1: Collection of Times of Dreams -->
-            <div class="playlist-card" onclick="showAlbum(0)">
-                <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Collection of Times of Dreams" class="playlist-cover">
+            <!-- Альбом ELECTRONIC LEGENDS -->
+            <div class="playlist-card" onclick="togglePlaylist(this)">
+                <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="ELECTRONIC LEGENDS" class="playlist-cover">
                 <div class="playlist-info">
-                    <h3 class="playlist-title">Collection of Times of Dreams</h3>
+                    <h3 class="playlist-title">ELECTRONIC LEGENDS</h3>
                     <p class="playlist-description">21 трек · DRAGERON DIABLOC</p>
                 </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Окно альбома -->
-    <div class="album-container" id="albumContainer">
-        <div class="album-content">
-            <button class="close-album" onclick="hideAlbum()">×</button>
-            
-            <div class="album-header">
-                <img src="" alt="Album Cover" class="album-cover" id="albumCover">
-                <div class="album-info">
-                    <h2 class="album-title" id="albumTitle">Album Title</h2>
-                    <p class="album-artist" id="albumArtist">DRAGERON DIABLOC</p>
+                <div class="track-list">
+                    <div class="track-item" onclick="showPlayer('Apocalypse Symphony', 'DRAGERON DIABLOC', 'music/Apocalypse Symphony.mp3')">Apocalypse Symphony</div>
+                    <div class="track-item" onclick="showPlayer('Apocalypse Symphony REMIX I', 'DRAGERON DIABLOC', 'music/Apocalypse Symphony REMIX I.mp3')">Apocalypse Symphony REMIX I</div>
+                    <div class="track-item" onclick="showPlayer('Apocalypse Symphony REMIX II', 'DRAGERON DIABLOC', 'music/Apocalypse Symphony REMIX II.mp3')">Apocalypse Symphony REMIX II</div>
+                    <div class="track-item" onclick="showPlayer('Apocalypse Symphony REMIX III', 'DRAGERON DIABLOC', 'music/Apocalypse Symphony REMIX III.mp3')">Apocalypse Symphony REMIX III</div>
+                    <div class="track-item" onclick="showPlayer('Chains of Steel', 'DRAGERON DIABLOC', 'music/Chains of Steel.mp3')">Chains of Steel</div>
+                    <div class="track-item" onclick="showPlayer('Chains of Steel REMIX', 'DRAGERON DIABLOC', 'music/Chains of Steel REMIX.mp3')">Chains of Steel REMIX</div>
+                    <div class="track-item" onclick="showPlayer('Clash of the Blades', 'DRAGERON DIABLOC', 'music/Clash of the Blades.mp3')">Clash of the Blades</div>
+                    <div class="track-item" onclick="showPlayer('Clash of the Blades REMIX', 'DRAGERON DIABLOC', 'music/Clash of the Blades REMIX.mp3')">Clash of the Blades REMIX</div>
+                    <div class="track-item" onclick="showPlayer('Dance of the Apocalypse', 'DRAGERON DIABLOC', 'music/Dance of the Apocalypse.mp3')">Dance of the Apocalypse</div>
+                    <div class="track-item" onclick="showPlayer('Dance of the Apocalypse REMIX', 'DRAGERON DIABLOC', 'music/Dance of the Apocalypse REMIX.mp3')">Dance of the Apocalypse REMIX</div>
+                    <div class="track-item" onclick="showPlayer('End of Days Symphony', 'DRAGERON DIABLOC', 'music/End of Days Symphony.mp3')">End of Days Symphony</div>
+                    <div class="track-item" onclick="showPlayer('End of Days Symphony REMIX', 'DRAGERON DIABLOC', 'music/End of Days Symphony REMIX.mp3')">End of Days Symphony REMIX</div>
+                    <div class="track-item" onclick="showPlayer('The Final Horizon', 'DRAGERON DIABLOC', 'music/The Final Horizon.mp3')">The Final Horizon</div>
+                    <div class="track-item" onclick="showPlayer('The Final Horizon REMIX', 'DRAGERON DIABLOC', 'music/The Final Horizon REMIX.mp3')">The Final Horizon REMIX</div>
+                    <div class="track-item" onclick="showPlayer('Eternal Wars', 'DRAGERON DIABLOC', 'music/Eternal Wars.mp3')">Eternal Wars</div>
+                    <div class="track-item" onclick="showPlayer('Eternal Wars REMIX I', 'DRAGERON DIABLOC', 'music/Eternal Wars REMIX I.mp3')">Eternal Wars REMIX I</div>
+                    <div class="track-item" onclick="showPlayer('Eternal Wars REMIX II', 'DRAGERON DIABLOC', 'music/Eternal Wars REMIX II.mp3')">Eternal Wars REMIX II</div>
+                    <div class="track-item" onclick="showPlayer('Eternal Wars REMIX III', 'DRAGERON DIABLOC', 'music/Eternal Wars REMIX III.mp3')">Eternal Wars REMIX III</div>
+                    <div class="track-item" onclick="showPlayer('Eternal Wars REMIX IV', 'DRAGERON DIABLOC', 'music/Eternal Wars REMIX IV.mp3')">Eternal Wars REMIX IV</div>
+                    <div class="track-item" onclick="showPlayer('Eternal Wars REMIX V', 'DRAGERON DIABLOC', 'music/Eternal Wars REMIX V.mp3')">Eternal Wars REMIX V</div>
                 </div>
             </div>
             
-            <div class="album-nav">
-                <button class="album-nav-btn" id="prevAlbumBtn" onclick="navigateAlbum(-1)">← Предыдущий альбом</button>
-                <button class="album-nav-btn" id="nextAlbumBtn" onclick="navigateAlbum(1)">Следующий альбом →</button>
+            <!-- Альбом THE GOLDEN YEARS -->
+            <div class="playlist-card" onclick="togglePlaylist(this)">
+                <img src="https://images.unsplash.com/photo-1496293455970-f8581aae0e3b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="THE GOLDEN YEARS" class="playlist-cover">
+                <div class="playlist-info">
+                    <h3 class="playlist-title">THE GOLDEN YEARS</h3>
+                    <p class="playlist-description">8 треков · DRAGERON DIABLOC</p>
+                </div>
+                <div class="track-list">
+                    <div class="track-item" onclick="showPlayer('Detective', 'DRAGERON DIABLOC', 'music/Detective.mp3')">Detective</div>
+                    <div class="track-item" onclick="showPlayer('Damn-House-Good-Ending', 'DRAGERON DIABLOC', 'music/Damn-House-Good-Ending.mp3')">Damn-House-Good-Ending</div>
+                    <div class="track-item" onclick="showPlayer('PRISON-BREAK', 'DRAGERON DIABLOC', 'music/PRISON-BREAK.mp3')">PRISON-BREAK</div>
+                    <div class="track-item" onclick="showPlayer('INTRO-MIX', 'DRAGERON DIABLOC', 'music/INTRO-MIX.mp3')">INTRO-MIX</div>
+                    <div class="track-item" onclick="showPlayer('MIRAGE', 'DRAGERON DIABLOC', 'music/MIRAGE.mp3')">MIRAGE</div>
+                    <div class="track-item" onclick="showPlayer('Day', 'DRAGERON DIABLOC', 'music/Day.mp3')">Day</div>
+                    <div class="track-item" onclick="showPlayer('FATAL FATE', 'DRAGERON DIABLOC', 'music/FATAL FATE.mp3')">FATAL FATE</div>
+                    <div class="track-item" onclick="showPlayer('Wat Flow', 'DRAGERON DIABLOC', 'music/Wat Flow.mp3')">Wat Flow</div>
+                </div>
             </div>
             
-            <div class="track-list" id="trackList">
-                <!-- Треки будут загружены динамически -->
+            <!-- Альбом Fallen Worlds -->
+            <div class="playlist-card" onclick="togglePlaylist(this)">
+                <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Fallen Worlds" class="playlist-cover">
+                <div class="playlist-info">
+                    <h3 class="playlist-title">Fallen Worlds</h3>
+                    <p class="playlist-description">10 треков · DRAGERON DIABLOC</p>
+                </div>
+                <div class="track-list">
+                    <div class="track-item" onclick="showPlayer('Fallen Worlds', 'DRAGERON DIABLOC', 'music/Fallen Worlds.mp3')">Fallen Worlds</div>
+                    <div class="track-item" onclick="showPlayer('Fallen Worlds REMIX', 'DRAGERON DIABLOC', 'music/Fallen Worlds REMIX.mp3')">Fallen Worlds REMIX</div>
+                    <div class="track-item" onclick="showPlayer('LAW OF BLOOD REMIX', 'DRAGERON DIABLOC', 'music/LAW OF BLOOD REMIX.mp3')">LAW OF BLOOD REMIX</div>
+                    <div class="track-item" onclick="showPlayer('LAW OF BLOOD', 'DRAGERON DIABLOC', 'music/LAW OF BLOOD.mp3')">LAW OF BLOOD</div>
+                    <div class="track-item" onclick="showPlayer('Neon Temples REMIX', 'DRAGERON DIABLOC', 'music/Neon Temples REMIX.mp3')">Neon Temples REMIX</div>
+                    <div class="track-item" onclick="showPlayer('Neon Temples', 'DRAGERON DIABLOC', 'music/Neon Temples.mp3')">Neon Temples</div>
+                    <div class="track-item" onclick="showPlayer('The hired life REMIX', 'DRAGERON DIABLOC', 'music/The hired life REMIX.mp3')">The hired life REMIX</div>
+                    <div class="track-item" onclick="showPlayer('The hired life', 'DRAGERON DIABLOC', 'music/The hired life.mp3')">The hired life</div>
+                    <div class="track-item" onclick="showPlayer('The year was 2642 REMIX', 'DRAGERON DIABLOC', 'music/The year was 2642 REMIX.mp3')">The year was 2642 REMIX</div>
+                    <div class="track-item" onclick="showPlayer('The year was 2642', 'DRAGERON DIABLOC', 'music/The year was 2642.mp3')">The year was 2642</div>
+                </div>
+            </div>
+            
+            <!-- Альбом GALACTIC HOUSE -->
+            <div class="playlist-card" onclick="togglePlaylist(this)">
+                <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="GALACTIC HOUSE" class="playlist-cover">
+                <div class="playlist-info">
+                    <h3 class="playlist-title">GALACTIC HOUSE</h3>
+                    <p class="playlist-description">4 трека · DRAGERON DIABLOC</p>
+                </div>
+                <div class="track-list">
+                    <div class="track-item" onclick="showPlayer('GALACTIC HOUSE HARDCORE REMIX', 'DRAGERON DIABLOC', 'music/GALACTIC HOUSE HARDCORE REMIX.mp3')">GALACTIC HOUSE HARDCORE REMIX</div>
+                    <div class="track-item" onclick="showPlayer('GALACTIC HOUSE HARDCORE', 'DRAGERON DIABLOC', 'music/GALACTIC HOUSE HARDCORE.mp3')">GALACTIC HOUSE HARDCORE</div>
+                    <div class="track-item" onclick="showPlayer('GALACTIC HOUSE REMIX', 'DRAGERON DIABLOC', 'music/GALACTIC HOUSE REMIX.mp3')">GALACTIC HOUSE REMIX</div>
+                    <div class="track-item" onclick="showPlayer('GALACTIC HOUSE', 'DRAGERON DIABLOC', 'music/GALACTIC HOUSE.mp3')">GALACTIC HOUSE</div>
+                </div>
+            </div>
+            
+            <!-- Альбом THE NEON VIRUS -->
+            <div class="playlist-card" onclick="togglePlaylist(this)">
+                <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="THE NEON VIRUS" class="playlist-cover">
+                <div class="playlist-info">
+                    <h3 class="playlist-title">THE NEON VIRUS</h3>
+                    <p class="playlist-description">8 треков · DRAGERON DIABLOC</p>
+                </div>
+                <div class="track-list">
+                    <div class="track-item" onclick="showPlayer('THE NEON VIRUS REMIX ........S........', 'DRAGERON DIABLOC', 'music/THE NEON VIRUS REMIX ........S........mp3')">THE NEON VIRUS REMIX ........S........</div>
+                    <div class="track-item" onclick="showPlayer('THE NEON VIRUS REMIX .......A......', 'DRAGERON DIABLOC', 'music/THE NEON VIRUS REMIX .......A......mp3')">THE NEON VIRUS REMIX .......A......</div>
+                    <div class="track-item" onclick="showPlayer('THE NEON VIRUS REMIX ......M......', 'DRAGERON DIABLOC', 'music/THE NEON VIRUS REMIX ......M......mp3')">THE NEON VIRUS REMIX ......M......</div>
+                    <div class="track-item" onclick="showPlayer('THE NEON VIRUS REMIX .....U.....', 'DRAGERON DIABLOC', 'music/THE NEON VIRUS REMIX .....U.....mp3')">THE NEON VIRUS REMIX .....U.....</div>
+                    <div class="track-item" onclick="showPlayer('THE NEON VIRUS REMIX ....R....', 'DRAGERON DIABLOC', 'music/THE NEON VIRUS REMIX ....R....mp3')">THE NEON VIRUS REMIX ....R....</div>
+                    <div class="track-item" onclick="showPlayer('THE NEON VIRUS REMIX ...A...', 'DRAGERON DIABLOC', 'music/THE NEON VIRUS REMIX ...A...mp3')">THE NEON VIRUS REMIX ...A...</div>
+                    <div class="track-item" onclick="showPlayer('THE NEON VIRUS REMIX ..I..', 'DRAGERON DIABLOC', 'music/THE NEON VIRUS REMIX ..I..mp3')">THE NEON VIRUS REMIX ..I..</div>
+                    <div class="track-item" onclick="showPlayer('THE NEON VIRUS X', 'DRAGERON DIABLOC', 'music/THE NEON VIRUS X.mp3')">THE NEON VIRUS X</div>
+                </div>
+            </div>
+            
+            <!-- Альбом Holy War -->
+            <div class="playlist-card" onclick="togglePlaylist(this)">
+                <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Holy War" class="playlist-cover">
+                <div class="playlist-info">
+                    <h3 class="playlist-title">Holy War</h3>
+                    <p class="playlist-description">7 треков · DRAGERON DIABLOC</p>
+                </div>
+                <div class="track-list">
+                    <div class="track-item" onclick="showPlayer('Holy War REMIX', 'DRAGERON DIABLOC', 'music/Holy War REMIX.mp3')">Holy War REMIX</div>
+                    <div class="track-item" onclick="showPlayer('Holy War', 'DRAGERON DIABLOC', 'music/Holy War.mp3')">Holy War</div>
+                    <div class="track-item" onclick="showPlayer('The Last Knight REMIX', 'DRAGERON DIABLOC', 'music/The Last Knight REMIX.mp3')">The Last Knight REMIX</div>
+                    <div class="track-item" onclick="showPlayer('The Last Knight', 'DRAGERON DIABLOC', 'music/The Last Knight.mp3')">The Last Knight</div>
+                    <div class="track-item" onclick="showPlayer('Лживые Надежды', 'DRAGERON DIABLOC', 'music/Лживые Надежды.mp3')">Лживые Надежды</div>
+                    <div class="track-item" onclick="showPlayer('ПЛАМЯ ВОССТАНИЯ REMIX Y', 'DRAGERON DIABLOC', 'music/ПЛАМЯ ВОССТАНИЯ REMIX Y.mp3')">ПЛАМЯ ВОССТАНИЯ REMIX Y</div>
+                    <div class="track-item" onclick="showPlayer('ПЛАМЯ ВОССТАНИЯ REMIX', 'DRAGERON DIABLOC', 'music/ПЛАМЯ ВОССТАНИЯ REMIX.mp3')">ПЛАМЯ ВОССТАНИЯ REMIX</div>
+                    <div class="track-item" onclick="showPlayer('ПЛАМЯ ВОССТАНИЯ', 'DRAGERON DIABLOC', 'music/ПЛАМЯ ВОССТАНИЯ.mp3')">ПЛАМЯ ВОССТАНИЯ</div>
+                </div>
+            </div>
+            
+            <!-- Альбом ГИМН МЕЧЕЙ -->
+            <div class="playlist-card" onclick="togglePlaylist(this)">
+                <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="ГИМН МЕЧЕЙ" class="playlist-cover">
+                <div class="playlist-info">
+                    <h3 class="playlist-title">ГИМН МЕЧЕЙ</h3>
+                    <p class="playlist-description">3 трека · DRAGERON DIABLOC</p>
+                </div>
+                <div class="track-list">
+                    <div class="track-item" onclick="showPlayer('ГИМН МЕЧЕЙ REMIX Z', 'DRAGERON DIABLOC', 'music/ГИМН МЕЧЕЙ REMIX Z.mp3')">ГИМН МЕЧЕЙ REMIX Z</div>
+                    <div class="track-item" onclick="showPlayer('ГИМН МЕЧЕЙ REMIX', 'DRAGERON DIABLOC', 'music/ГИМН МЕЧЕЙ REMIX.mp3')">ГИМН МЕЧЕЙ REMIX</div>
+                    <div class="track-item" onclick="showPlayer('ГИМН МЕЧЕЙ', 'DRAGERON DIABLOC', 'music/ГИМН МЕЧЕЙ.mp3')">ГИМН МЕЧЕЙ</div>
+                </div>
+            </div>
+            
+            <!-- Альбом Гниющие Королевства и Павшие Империи -->
+            <div class="playlist-card" onclick="togglePlaylist(this)">
+                <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Гниющие Королевства и Павшие Империи" class="playlist-cover">
+                <div class="playlist-info">
+                    <h3 class="playlist-title">Гниющие Королевства и Павшие Империи</h3>
+                    <p class="playlist-description">11 треков · DRAGERON DIABLOC</p>
+                </div>
+                <div class="track-list">
+                    <div class="track-item" onclick="showPlayer('Гниющие Королевства и Павшие Империи REMIX I', 'DRAGERON DIABLOC', 'music/Гниющие Королевства и Павшие Империи REMIX I.mp3')">Гниющие Королевства и Павшие Империи REMIX I</div>
+                    <div class="track-item" onclick="showPlayer('Гниющие Королевства и Павшие Империи REMIX II', 'DRAGERON DIABLOC', 'music/Гниющие Королевства и Павшие Империи REMIX II.mp3')">Гниющие Королевства и Павшие Империи REMIX II</div>
+                    <div class="track-item" onclick="showPlayer('Гниющие Королевства и Павшие Империи REMIX III', 'DRAGERON DIABLOC', 'music/Гниющие Королевства и Павшие Империи REMIX III.mp3')">Гниющие Королевства и Павшие Империи REMIX III</div>
+                    <div class="track-item" onclick="showPlayer('Гниющие Королевства и Павшие Империи REMIX IV', 'DRAGERON DIABLOC', 'music/Гниющие Королевства и Павшие Империи REMIX IV.mp3')">Гниющие Королевства и Павшие Империи REMIX IV</div>
+                    <div class="track-item" onclick="showPlayer('Гниющие Королевства и Павшие Империи REMIX V', 'DRAGERON DIABLOC', 'music/Гниющие Королевства и Павшие Империи REMIX V.mp3')">Гниющие Королевства и Павшие Империи REMIX V</div>
+                    <div class="track-item" onclick="showPlayer('Гниющие Королевства и Павшие Империи REMIX VI', 'DRAGERON DIABLOC', 'music/Гниющие Королевства и Павшие Империи REMIX VI.mp3')">Гниющие Королевства и Павшие Империи REMIX VI</div>
+                    <div class="track-item" onclick="showPlayer('Гниющие Королевства и Павшие Империи REMIX VII', 'DRAGERON DIABLOC', 'music/Гниющие Королевства и Павшие Империи REMIX VII.mp3')">Гниющие Королевства и Павшие Империи REMIX VII</div>
+                    <div class="track-item" onclick="showPlayer('Гниющие Королевства и Павшие Империи REMIX VIII', 'DRAGERON DIABLOC', 'music/Гниющие Королевства и Павшие Империи REMIX VIII.mp3')">Гниющие Королевства и Павшие Империи REMIX VIII</div>
+                    <div class="track-item" onclick="showPlayer('Гниющие Королевства и Павшие Империи REMIX IX', 'DRAGERON DIABLOC', 'music/Гниющие Королевства и Павшие Империи REMIX IX.mp3')">Гниющие Королевства и Павшие Империи REMIX IX</div>
+                    <div class="track-item" onclick="showPlayer('Гниющие Королевства и Павшие Империи REMIX X', 'DRAGERON DIABLOC', 'music/Гниющие Королевства и Павшие Империи REMIX X.mp3')">Гниющие Королевства и Павшие Империи REMIX X</div>
+                    <div class="track-item" onclick="showPlayer('Гниющие Королевства и Павшие Империи', 'DRAGERON DIABLOC', 'music/Гниющие Королевства и Павшие Империи.mp3')">Гниющие Королевства и Павшие Империи</div>
+                    </div>
+         </div>
+         <!-- Альбом ИМПЕРИЯ ДРАГЕОН -->
+        <div class="playlist-card" onclick="togglePlaylist(this)">
+            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="ИМПЕРИЯ ДРАГЕОН" class="playlist-cover">
+            <div class="playlist-info">
+                <h3 class="playlist-title">ИМПЕРИЯ ДРАГЕОН</h3>
+                <p class="playlist-description">7 треков · DRAGERON DIABLOC</p>
+            </div>
+            <div class="track-list">
+                <div class="track-item" onclick="showPlayer('ИМПЕРИЯ ДРАГЕОН REMIX I', 'DRAGERON DIABLOC', 'music/ИМПЕРИЯ ДРАГЕОН REMIX I.mp3')">ИМПЕРИЯ ДРАГЕОН REMIX I</div>
+                <div class="track-item" onclick="showPlayer('ИМПЕРИЯ ДРАГЕОН REMIX II', 'DRAGERON DIABLOC', 'music/ИМПЕРИЯ ДРАГЕОН REMIX II.mp3')">ИМПЕРИЯ ДРАГЕОН REMIX II</div>
+                <div class="track-item" onclick="showPlayer('ИМПЕРИЯ ДРАГЕОН REMIX III', 'DRAGERON DIABLOC', 'music/ИМПЕРИЯ ДРАГЕОН REMIX III.mp3')">ИМПЕРИЯ ДРАГЕОН REMIX III</div>
+                <div class="track-item" onclick="showPlayer('ИМПЕРИЯ ДРАГЕОН REMIX IV', 'DRAGERON DIABLOC', 'music/ИМПЕРИЯ ДРАГЕОН REMIX IV.mp3')">ИМПЕРИЯ ДРАГЕОН REMIX IV</div>
+                <div class="track-item" onclick="showPlayer('ИМПЕРИЯ ДРАГЕОН REMIX V', 'DRAGERON DIABLOC', 'music/ИМПЕРИЯ ДРАГЕОН REMIX V.mp3')">ИМПЕРИЯ ДРАГЕОН REMIX V</div>
+                <div class="track-item" onclick="showPlayer('ИМПЕРИЯ ДРАГЕОН REMIX VI', 'DRAGERON DIABLOC', 'music/ИМПЕРИЯ ДРАГЕОН REMIX VI.mp3')">ИМПЕРИЯ ДРАГЕОН REMIX VI</div>
+                <div class="track-item" onclick="showPlayer('ИМПЕРИЯ ДРАГЕОН', 'DRAGERON DIABLOC', 'music/ИМПЕРИЯ ДРАГЕОН.mp3')">ИМПЕРИЯ ДРАГЕОН</div>
+            </div>
+        </div>
+        
+        <!-- Альбом Лунный лес -->
+        <div class="playlist-card" onclick="togglePlaylist(this)">
+            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Лунный лес" class="playlist-cover">
+            <div class="playlist-info">
+                <h3 class="playlist-title">Лунный лес</h3>
+                <p class="playlist-description">2 трека · DRAGERON DIABLOC</p>
+            </div>
+            <div class="track-list">
+                <div class="track-item" onclick="showPlayer('Лунный лес REMIX', 'DRAGERON DIABLOC', 'music/Лунный лес REMIX.mp3')">Лунный лес REMIX</div>
+                <div class="track-item" onclick="showPlayer('Лунный лес', 'DRAGERON DIABLOC', 'music/Лунный лес.mp3')">Лунный лес</div>
+            </div>
+        </div>
+        
+        <!-- Альбом ОРДЕН ВОРОНА -->
+        <div class="playlist-card" onclick="togglePlaylist(this)">
+            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="ОРДЕН ВОРОНА" class="playlist-cover">
+            <div class="playlist-info">
+                <h3 class="playlist-title">ОРДЕН ВОРОНА</h3>
+                <p class="playlist-description">11 треков · DRAGERON DIABLOC</p>
+            </div>
+            <div class="track-list">
+                <div class="track-item" onclick="showPlayer('ОРДЕН ВОРОНА REMIX I', 'DRAGERON DIABLOC', 'music/ОРДЕН ВОРОНА REMIX I.mp3')">ОРДЕН ВОРОНА REMIX I</div>
+                <div class="track-item" onclick="showPlayer('ОРДЕН ВОРОНА REMIX II', 'DRAGERON DIABLOC', 'music/ОРДЕН ВОРОНА REMIX II.mp3')">ОРДЕН ВОРОНА REMIX II</div>
+                <div class="track-item" onclick="showPlayer('ОРДЕН ВОРОНА REMIX III', 'DRAGERON DIABLOC', 'music/ОРДЕН ВОРОНА REMIX III.mp3')">ОРДЕН ВОРОНА REMIX III</div>
+                <div class="track-item" onclick="showPlayer('ОРДЕН ВОРОНА REMIX IV', 'DRAGERON DIABLOC', 'music/ОРДЕН ВОРОНА REMIX IV.mp3')">ОРДЕН ВОРОНА REMIX IV</div>
+                <div class="track-item" onclick="showPlayer('ОРДЕН ВОРОНА REMIX V', 'DRAGERON DIABLOC', 'music/ОРДЕН ВОРОНА REMIX V.mp3')">ОРДЕН ВОРОНА REMIX V</div>
+                <div class="track-item" onclick="showPlayer('ОРДЕН ВОРОНА REMIX VI', 'DRAGERON DIABLOC', 'music/ОРДЕН ВОРОНА REMIX VI.mp3')">ОРДЕН ВОРОНА REMIX VI</div>
+                <div class="track-item" onclick="showPlayer('ОРДЕН ВОРОНА REMIX VII', 'DRAGERON DIABLOC', 'music/ОРДЕН ВОРОНА REMIX VII.mp3')">ОРДЕН ВОРОНА REMIX VII</div>
+                <div class="track-item" onclick="showPlayer('ОРДЕН ВОРОНА REMIX VIII', 'DRAGERON DIABLOC', 'music/ОРДЕН ВОРОНА REMIX VIII.mp3')">ОРДЕН ВОРОНА REMIX VIII</div>
+                <div class="track-item" onclick="showPlayer('ОРДЕН ВОРОНА REMIX IX', 'DRAGERON DIABLOC', 'music/ОРДЕН ВОРОНА REMIX IX.mp3')">ОРДЕН ВОРОНА REMIX IX</div>
+                <div class="track-item" onclick="showPlayer('ОРДЕН ВОРОНА REMIX X', 'DRAGERON DIABLOC', 'music/ОРДЕН ВОРОНА REMIX X.mp3')">ОРДЕН ВОРОНА REMIX X</div>
+                <div class="track-item" onclick="showPlayer('ОРДЕН ВОРОНА', 'DRAGERON DIABLOC', 'music/ОРДЕН ВОРОНА.mp3')">ОРДЕН ВОРОНА</div>
+            </div>
+        </div>
+        
+        <!-- Альбом ПЛОТОЯДНАЯ ТВАРЬ -->
+        <div class="playlist-card" onclick="togglePlaylist(this)">
+            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="ПЛОТОЯДНАЯ ТВАРЬ" class="playlist-cover">
+            <div class="playlist-info">
+                <h3 class="playlist-title">ПЛОТОЯДНАЯ ТВАРЬ</h3>
+                <p class="playlist-description">8 треков · DRAGERON DIABLOC</p>
+            </div>
+            <div class="track-list">
+                <div class="track-item" onclick="showPlayer('ПЛОТОЯДНАЯ ТВАРЬ REMIX I', 'DRAGERON DIABLOC', 'music/ПЛОТОЯДНАЯ ТВАРЬ REMIX I.mp3')">ПЛОТОЯДНАЯ ТВАРЬ REMIX I</div>
+                <div class="track-item" onclick="showPlayer('ПЛОТОЯДНАЯ ТВАРЬ REMIX II', 'DRAGERON DIABLOC', 'music/ПЛОТОЯДНАЯ ТВАРЬ REMIX II.mp3')">ПЛОТОЯДНАЯ ТВАРЬ REMIX II</div>
+                <div class="track-item" onclick="showPlayer('ПЛОТОЯДНАЯ ТВАРЬ REMIX III', 'DRAGERON DIABLOC', 'music/ПЛОТОЯДНАЯ ТВАРЬ REMIX III.mp3')">ПЛОТОЯДНАЯ ТВАРЬ REMIX III</div>
+                <div class="track-item" onclick="showPlayer('ПЛОТОЯДНАЯ ТВАРЬ REMIX IV', 'DRAGERON DIABLOC', 'music/ПЛОТОЯДНАЯ ТВАРЬ REMIX IV.mp3')">ПЛОТОЯДНАЯ ТВАРЬ REMIX IV</div>
+                <div class="track-item" onclick="showPlayer('ПЛОТОЯДНАЯ ТВАРЬ REMIX V', 'DRAGERON DIABLOC', 'music/ПЛОТОЯДНАЯ ТВАРЬ REMIX V.mp3')">ПЛОТОЯДНАЯ ТВАРЬ REMIX V</div>
+                <div class="track-item" onclick="showPlayer('ПЛОТОЯДНАЯ ТВАРЬ REMIX VI', 'DRAGERON DIABLOC', 'music/ПЛОТОЯДНАЯ ТВАРЬ REMIX VI.mp3')">ПЛОТОЯДНАЯ ТВАРЬ REMIX VI</div>
+                <div class="track-item" onclick="showPlayer('ПЛОТОЯДНАЯ ТВАРЬ REMIX VII', 'DRAGERON DIABLOC', 'music/ПЛОТОЯДНАЯ ТВАРЬ REMIX VII.mp3')">ПЛОТОЯДНАЯ ТВАРЬ REMIX VII</div>
+                <div class="track-item" onclick="showPlayer('ПЛОТОЯДНАЯ ТВАРЬ', 'DRAGERON DIABLOC', 'music/ПЛОТОЯДНАЯ ТВАРЬ.mp3')">ПЛОТОЯДНАЯ ТВАРЬ</div>
+            </div>
+        </div>
+        
+        <!-- Альбом UNNAMED -->
+        <div class="playlist-card" onclick="togglePlaylist(this)">
+            <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="UNNAMED" class="playlist-cover">
+            <div class="playlist-info">
+                <h3 class="playlist-title">UNNAMED</h3>
+                <p class="playlist-description">0 треков · DRAGERON DIABLOC</p>
+            </div>
+            <div class="track-list">
+                <!-- Треки будут добавлены позже -->
             </div>
         </div>
     </div>
-    
-    <!-- Аудиоплеер -->
-    <div class="player-container" id="player">
-        <div class="player-content">
-            <img src="https://via.placeholder.com/300" alt="Track Cover" class="player-cover" id="player-cover">
-            <div class="player-info">
-                <div class="player-title" id="player-title">Track Title</div>
-                <div class="player-artist" id="player-artist">Artist</div>
-            </div>
-            <audio controls id="audio-player"></audio>
-            <button class="close-player" onclick="hidePlayer()">×</button>
-        </div>
-    </div>
-    
-    <script>
-        // Данные альбомов
-        const albums = [
-            {
-                title: "Collection of Times of Dreams",
-                artist: "DRAGERON DIABLOC",
-                cover: "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-                tracks: [
-                    { title: "Apocalypse Symphony", file: "music/Apocalypse Symphony.mp3", album: "ELECTRONIC LEGENDS" },
-                    { title: "Apocalypse Symphony REMIX I", file: "music/Apocalypse Symphony REMIX I.mp3", album: "ELECTRONIC LEGENDS" },
-                    { title: "Apocalypse Symphony REMIX II", file: "music/Apocalypse Symphony REMIX II.mp3", album: "ELECTRONIC LEGENDS" },
-                    { title: "Apocalypse Symphony REMIX III", file: "music/Apocalypse Symphony REMIX III.mp3", album: "ELECTRONIC LEGENDS" },
-                    { title: "Chains of Steel", file: "music/Chains of Steel.mp3", album: "ELECTRONIC LEGENDS" },
-                    { title: "Chains of Steel REMIX", file: "music/Chains of Steel REMIX.mp3", album: "ELECTRONIC LEGENDS" },
-                    { title: "Clash of the Blades", file: "music/Clash of the Blades.mp3", album: "ELECTRONIC LEGENDS" },
-                    { title: "Clash of the Blades REMIX", file: "music/Clash of the Blades REMIX.mp3", album: "ELECTRONIC LEGENDS" },
-                    { title: "Dance of the Apocalypse", file: "music/Dance of the Apocalypse.mp3", album: "ELECTRONIC LEGENDS" },
-                    { title: "Dance of the Apocalypse REMIX", file: "music/Dance of the Apocalypse REMIX.mp3", album: "ELECTRONIC LEGENDS" },
-                    { title: "End of Days Symphony", file: "music/End of Days Symphony.mp3", album: "ELECTRONIC LEGENDS" },
-                    { title: "End of Days Symphony REMIX", file: "music/End of Days Symphony REMIX.mp3", album: "ELECTRONIC LEGENDS" },
-                    { title: "The Final Horizon", file: "music/The Final Horizon.mp3", album: "ELECTRONIC LEGENDS" },
-                    { title: "The Final Horizon REMIX", file: "music/The Final Horizon REMIX.mp3", album: "ELECTRONIC LEGENDS" },
-                    { title: "Eternal Wars", file: "music/Eternal Wars.mp3", album: "ELECTRONIC LEGENDS" },
-                    { title: "Eternal Wars REMIX I", file: "music/Eternal Wars REMIX I.mp3", album: "ELECTRONIC LEGENDS" },
-                    { title: "Eternal Wars REMIX II", file: "music/Eternal Wars REMIX II.mp3", album: "ELECTRONIC LEGENDS" },
-                    { title: "Eternal Wars REMIX III", file: "music/Eternal Wars REMIX III.mp3", album: "ELECTRONIC LEGENDS" },
-                    { title: "Eternal Wars REMIX IV", file: "music/Eternal Wars REMIX IV.mp3", album: "ELECTRONIC LEGENDS" },
-                    { title: "Eternal Wars REMIX V", file: "music/Eternal Wars REMIX V.mp3", album: "ELECTRONIC LEGENDS" },
-                    { title: "Detective", file: "music/Detective.mp3", album: "THE GOLDEN YEARS" },
-                    { title: "Damn-House-Good-Ending", file: "music/Damn-House-Good-Ending.mp3", album: "THE GOLDEN YEARS" },
-                    { title: "PRISON-BREAK", file: "music/PRISON-BREAK.mp3", album: "THE GOLDEN YEARS" },
-                    { title: "INTRO-MIX", file: "music/INTRO-MIX.mp3", album: "THE GOLDEN YEARS" },
-                    { title: "MIRAGE", file: "music/MIRAGE.mp3", album: "THE GOLDEN YEARS" },
-                    { title: "Day", file: "music/Day.mp3", album: "THE GOLDEN YEARS" },
-                    { title: "FATAL FATE", file: "music/FATAL FATE.mp3", album: "THE GOLDEN YEARS" },
-                    { title: "Wat Flow", file: "music/Wat Flow.mp3", album: "THE GOLDEN YEARS" }
-                ]
-            },
-            {
-                title: "The Golden Years",
-                artist: "DRAGERON DIABLOC",
-                cover: "https://images.unsplash.com/photo-1496293455970-f8581aae0e3b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80",
-                tracks: [
-                    { title: "Detective", file: "music/Detective.mp3" },
-                    { title: "Damn-House-Good-Ending", file: "music/Damn-House-Good-Ending.mp3" },
-                    { title: "PRISON-BREAK", file: "music/PRISON-BREAK.mp3" },
-                    { title: "INTRO-MIX", file: "music/INTRO-MIX.mp3" },
-                    { title: "MIRAGE", file: "music/MIRAGE.mp3" },
-                    { title: "Day", file: "music/Day.mp3" },
-                    { title: "FATAL FATE", file: "music/FATAL FATE.mp3" },
-                    { title: "Wat Flow", file: "music/Wat Flow.mp3" }
-                ]
-            }
-        ];
-        
-        // Текущий открытый альбом
-        let currentAlbumIndex = 0;
-        
-        // Показать альбом
-        function showAlbum(index) {
-            const album = albums[index];
-            currentAlbumIndex = index;
-            
-            document.getElementById('albumTitle').textContent = album.title;
-            document.getElementById('albumArtist').textContent = album.artist;
-            document.getElementById('albumCover').src = album.cover;
-            
-            // Обновляем кнопки навигации
-            document.getElementById('prevAlbumBtn').disabled = index === 0;
-            document.getElementById('nextAlbumBtn').disabled = index === albums.length - 1;
-            
-            // Заполняем список треков
-            const trackList = document.getElementById('trackList');
-            trackList.innerHTML = '';
-            
-            let currentAlbumName = '';
-            album.tracks.forEach((track, i) => {
-                // Добавляем заголовок альбома, если он изменился
-                if (track.album && track.album !== currentAlbumName) {
-                    currentAlbumName = track.album;
-                    const albumHeader = document.createElement('div');
-                    albumHeader.className = 'track-item';
-                    albumHeader.style.fontWeight = 'bold';
-                    albumHeader.style.cursor = 'default';
-                    albumHeader.style.pointerEvents = 'none';
-                    albumHeader.textContent = `Альбом ${currentAlbumName}`;
-                    trackList.appendChild(albumHeader);
-                }
-                
-                const trackItem = document.createElement('div');
-                trackItem.className = 'track-item';
-                trackItem.innerHTML = `
-                    <span class="track-number">${i + 1}</span>
-                    <span class="track-name">${track.title}</span>
-                `;
-                trackItem.onclick = () => showPlayer(track.title, album.artist, track.file);
-                trackList.appendChild(trackItem);
-            });
-            
-            document.getElementById('albumContainer').style.display = 'block';
-        }
-        
-        // Скрыть альбом
-        function hideAlbum() {
-            document.getElementById('albumContainer').style.display = 'none';
-        }
-        
-        // Навигация по альбомам
-        function navigateAlbum(direction) {
-            const newIndex = currentAlbumIndex + direction;
-            if (newIndex >= 0 && newIndex < albums.length) {
-                showAlbum(newIndex);
-            }
-        }
-        
-        // Поиск треков
-        document.getElementById('searchInput').addEventListener('input', function() {
-            const searchTerm = this.value.toLowerCase();
-            if (searchTerm.length < 2) return;
-            
-            const results = [];
-            
-            // Ищем во всех альбомах
-            albums.forEach(album => {
-                album.tracks.forEach(track => {
-                    if (track.title.toLowerCase().includes(searchTerm)) {
-                        results.push({
-                            album: album.title,
-                            artist: album.artist,
-                            cover: album.cover,
-                            track: track
-                        });
-                    }
-                });
-            });
-            
-            // Показываем результаты поиска
-            if (results.length > 0) {
-                document.getElementById('albumTitle').textContent = `Результаты поиска: "${searchTerm}"`;
-                document.getElementById('albumArtist').textContent = `${results.length} треков найдено`;
-                document.getElementById('albumCover').src = results[0].cover;
-                
-                // Обновляем кнопки навигации (отключаем для результатов поиска)
-                document.getElementById('prevAlbumBtn').disabled = true;
-                document.getElementById('nextAlbumBtn').disabled = true;
-                
-                // Заполняем список треков
-                const trackList = document.getElementById('trackList');
-                trackList.innerHTML = '';
-                
-                results.forEach((result, i) => {
-                    const trackItem = document.createElement('div');
-                    trackItem.className = 'track-item';
-                    trackItem.innerHTML = `
-                        <span class="track-number">${i + 1}</span>
-                        <span class="track-name">${result.track.title}</span>
-                        <span class="track-album" style="color: #b3b3b3; font-size: 0.8rem;">${result.album}</span>
-                    `;
-                    trackItem.onclick = () => {
-                        showPlayer(result.track.title, result.artist, result.track.file);
-                        // Находим индекс альбома, чтобы можно было переключаться
-                        const albumIndex = albums.findIndex(a => a.title === result.album);
-                        if (albumIndex !== -1) {
-                            showAlbum(albumIndex);
-                        }
-                    };
-                    trackList.appendChild(trackItem);
-                });
-                
-                document.getElementById('albumContainer').style.display = 'block';
-            }
-        });
-        
-        // Показать плеер с выбранным треком
-        function showPlayer(title, artist, audioSrc) {
-            document.getElementById('player-title').textContent = title;
-            document.getElementById('player-artist').textContent = artist;
-            
-            const audioPlayer = document.getElementById('audio-player');
-            audioPlayer.src = audioSrc;
-            audioPlayer.load();
-            
-            document.getElementById('player').style.display = 'block';
-            
-            // Извлекаем обложку из аудиофайла
-            new jsmediatags.Reader(audioSrc)
-                .setTagsToRead(["picture"])
-                .read({
-                    onSuccess: function(tag) {
-                        const picture = tag.tags.picture;
-                        if (picture) {
-                            const base64String = arrayBufferToBase64(picture.data);
-                            const coverUrl = `data:${picture.format};base64,${base64String}`;
-                            document.getElementById('player-cover').src = coverUrl;
-                        } else {
-                            // Если обложки нет, используем альбомную или заглушку
-                            const album = albums.find(a => a.tracks.some(t => t.file === audioSrc));
-                            if (album) {
-                                document.getElementById('player-cover').src = album.cover;
-                            } else {
-                                document.getElementById('player-cover').src = 'https://via.placeholder.com/300';
-                            }
-                        }
-                    },
-                    onError: function(error) {
-                        console.error("Ошибка чтения метаданных:", error);
-                        document.getElementById('player-cover').src = 'https://via.placeholder.com/300';
-                    }
-                });
-            
-            // Автовоспроизведение при открытии плеера
-            audioPlayer.play().catch(e => console.log("Автовоспроизведение не разрешено:", e));
-        }
+</section>
 
-        // Вспомогательная функция для преобразования ArrayBuffer в Base64
-        function arrayBufferToBase64(buffer) {
-            let binary = '';
-            const bytes = new Uint8Array(buffer);
-            for (let i = 0; i < bytes.byteLength; i++) {
-                binary += String.fromCharCode(bytes[i]);
-            }
-            return window.btoa(binary);
-        }
+<!-- Аудиоплеер -->
+<div class="player-container" id="player">
+    <div class="player-content">
+        <img src="https://via.placeholder.com/300" alt="Обложка трека" class="player-cover" id="player-cover">
+        <div class="player-info">
+            <div class="player-title" id="player-title">Название трека</div>
+            <div class="player-artist" id="player-artist">Исполнитель</div>
+            <div class="player-controls">
+                <audio controls id="audio-player">
+                    <source src="" type="audio/mpeg">
+                    Ваш браузер не поддерживает аудио элемент.
+                </audio>
+                <button class="repeat-btn" id="repeatBtn" title="Повтор">🔁</button>
+            </div>
+        </div>
+        <button class="close-player" onclick="hidePlayer()">✕</button>
+    </div>
+</div>
+
+<script>
+    // Показать плеер с выбранным треком
+    function showPlayer(title, artist, audioSrc) {
+        document.getElementById('player-title').textContent = title;
+        document.getElementById('player-artist').textContent = artist;
         
-        // Скрыть плеер
-        function hidePlayer() {
-            document.getElementById('player').style.display = 'none';
-            const audioPlayer = document.getElementById('audio-player');
-            audioPlayer.pause();
-        }
+        const audioPlayer = document.getElementById('audio-player');
+        audioPlayer.src = audioSrc;
+        audioPlayer.load();
         
-        // Прокрутка к плейлистам при нажатии на кнопку
-        document.querySelector('.btn').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
+        document.getElementById('player').style.display = 'block';
+        
+        // Извлекаем обложку из аудиофайла
+        new jsmediatags.Reader(audioSrc)
+            .setTagsToRead(["picture"])
+            .read({
+                onSuccess: function(tag) {
+                    const picture = tag.tags.picture;
+                    if (picture) {
+                        const base64String = arrayBufferToBase64(picture.data);
+                        const coverUrl = `data:${picture.format};base64,${base64String}`;
+                        document.getElementById('player-cover').src = coverUrl;
+                    } else {
+                        // Если обложки нет, используем альбомную или заглушку
+                        const playlistCard = document.querySelector(`[onclick*="${audioSrc}"]`).closest('.playlist-card');
+                        if (playlistCard) {
+                            const albumCover = playlistCard.querySelector('.playlist-cover').src;
+                            document.getElementById('player-cover').src = albumCover;
+                        } else {
+                            document.getElementById('player-cover').src = 'https://via.placeholder.com/300';
+                        }
+                    }
+                },
+                onError: function(error) {
+                    console.error("Ошибка чтения метаданных:", error);
+                    document.getElementById('player-cover').src = 'https://via.placeholder.com/300';
+                }
             });
-        });
         
-        // Переключение темы
-        const themeSwitcher = document.getElementById('themeSwitcher');
-        themeSwitcher.addEventListener('click', function() {
-            document.body.classList.toggle('light-theme');
+        // Автовоспроизведение при открытии плеера
+        audioPlayer.play().catch(e => console.log("Автовоспроизведение не разрешено:", e));
+    }
+
+    // Вспомогательная функция для преобразования ArrayBuffer в Base64
+    function arrayBufferToBase64(buffer) {
+        let binary = '';
+        const bytes = new Uint8Array(buffer);
+        for (let i = 0; i < bytes.byteLength; i++) {
+            binary += String.fromCharCode(bytes[i]);
+        }
+        return window.btoa(binary);
+    }
+    
+    // Скрыть плеер
+    function hidePlayer() {
+        document.getElementById('player').style.display = 'none';
+        const audioPlayer = document.getElementById('audio-player');
+        audioPlayer.pause();
+    }
+    
+    // Прокрутка к плейлистам при нажатии на кнопку
+    document.querySelector('.btn').addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+    
+    // Переключение темы
+    const themeSwitcher = document.getElementById('themeSwitcher');
+    themeSwitcher.addEventListener('click', function() {
+        document.body.classList.toggle('light-theme');
+        
+        // Сохраняем выбор темы в localStorage
+        const isLight = document.body.classList.contains('light-theme');
+        localStorage.setItem('lightTheme', isLight);
+    });
+    
+    // Проверяем сохранённую тему при загрузке
+    window.addEventListener('DOMContentLoaded', () => {
+        const savedTheme = localStorage.getItem('lightTheme');
+        if (savedTheme === 'true') {
+            document.body.classList.add('light-theme');
+        }
+    });
+
+    // Функция для переключения отображения списка треков
+    function togglePlaylist(element) {
+        const trackList = element.querySelector('.track-list');
+        if (trackList) {
+            trackList.style.display = trackList.style.display === 'none' ? 'block' : 'none';
+        }
+    }
+
+    // Поиск треков
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        const playlistCards = document.querySelectorAll('.playlist-card');
+        
+        playlistCards.forEach(card => {
+            const playlistTitle = card.querySelector('.playlist-title').textContent.toLowerCase();
+            const trackItems = card.querySelectorAll('.track-item');
+            let hasMatches = false;
             
-            // Сохраняем выбор темы в localStorage
-            const isLight = document.body.classList.contains('light-theme');
-            localStorage.setItem('lightTheme', isLight);
-        });
-        
-        // Проверяем сохранённую тему при загрузке
-        window.addEventListener('DOMContentLoaded', () => {
-            const savedTheme = localStorage.getItem('lightTheme');
-            if (savedTheme === 'true') {
-                document.body.classList.add('light-theme');
+            // Сначала проверяем название альбома
+            if (playlistTitle.includes(searchTerm)) {
+                hasMatches = true;
+            } else {
+                // Затем проверяем треки
+                trackItems.forEach(item => {
+                    const trackName = item.textContent.toLowerCase();
+                    if (trackName.includes(searchTerm)) {
+                        hasMatches = true;
+                        // Показываем трек, даже если он был скрыт
+                        item.style.display = 'block';
+                    } else {
+                        // Скрываем треки, которые не соответствуют поиску
+                        item.style.display = 'none';
+                    }
+                });
             }
+            
+            // Показываем/скрываем альбом в зависимости от наличия совпадений
+            card.style.display = hasMatches ? 'block' : 'none';
         });
-    </script>
-</body>
-</html>
+    });
+
+    // Управление повторением трека
+    const repeatBtn = document.getElementById('repeatBtn');
+    const audioPlayer = document.getElementById('audio-player');
+    let repeatMode = 0; // 0 - нет повтора, 1 - повтор трека, 2 - повтор плейлиста
+    
+    repeatBtn.addEventListener('click', function() {
+        repeatMode = (repeatMode + 1) % 2; // Переключаем между 0 и 1
+        this.classList.toggle('active', repeatMode === 1);
+        audioPlayer.loop = repeatMode === 1;
+    });
+
+    // Обработка окончания трека
+    audioPlayer.addEventListener('ended', function() {
+        if (repeatMode === 1) {
+            // Если включен повтор трека, просто воспроизводим его снова
+            this.currentTime = 0;
+            this.play();
+        }
+    });
+</script>
