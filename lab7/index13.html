@@ -197,10 +197,10 @@
         /* Стили для списка треков */
         .track-list {
             display: none;
-            background: #383838;
-            padding: 10px;
             max-height: 300px;
             overflow-y: auto;
+            background: #333;
+            padding: 10px;
         }
         
         .light-theme .track-list {
@@ -209,7 +209,7 @@
         
         .track-item {
             padding: 10px;
-            border-bottom: 1px solid #484848;
+            border-bottom: 1px solid #444;
             cursor: pointer;
         }
         
@@ -218,7 +218,7 @@
         }
         
         .track-item:hover {
-            background: #484848;
+            background: #444;
         }
         
         .light-theme .track-item:hover {
@@ -331,27 +331,47 @@
     
     <!-- Секция плейлистов -->
     <section class="playlists" id="playlists">
-        <h2 class="section-title">Плейлисты</h2>
+        <h2 class="section-title">Альбомы</h2>
         <div class="playlist-grid">
-            <!-- Плейлист 1 - Collection of Times of Dreams -->
+            <!-- Плейлист 1: Collection of Times of Dreams -->
             <div class="playlist-card" onclick="togglePlaylist(this)">
                 <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Collection of Times of Dreams" class="playlist-cover">
                 <div class="playlist-info">
                     <h3 class="playlist-title">Collection of Times of Dreams</h3>
-                    <p class="playlist-description">Альбомы: Golden Years Overture и Untitled</p>
+                    <p class="playlist-description">21 трек · DRAGERON DIABLOC</p>
                 </div>
                 <div class="track-list">
-                 <!-- Альбом Untitled -->
-                    <div class="track-item" onclick="event.stopPropagation(); showPlayer('Untitled', 'DRAGERON DIABLOC', 'music/Untitled.mp3')">Untitled</div>
-                    <div class="track-item" onclick="event.stopPropagation(); showPlayer('Untitled REMIX I', 'DRAGERON DIABLOC', 'music/Untitled_REMIX_I.mp3')">Untitled REMIX I</div>
-                    <div class="track-item" onclick="event.stopPropagation(); showPlayer('Untitled REMIX II', 'DRAGERON DIABLOC', 'music/Untitled_REMIX_II.mp3')">Untitled REMIX II</div>
-                    <div class="track-item" onclick="event.stopPropagation(); showPlayer('Untitled REMIX III', 'DRAGERON DIABLOC', 'music/Untitled_REMIX_III.mp3')">Untitled REMIX III</div>
-                    <div class="track-item" onclick="event.stopPropagation(); showPlayer('Untitled REMIX IV', 'DRAGERON DIABLOC', 'music/Untitled_REMIX_IV.mp3')">Untitled REMIX IV</div>
-                    <div class="track-item" onclick="event.stopPropagation(); showPlayer('Untitled REMIX V', 'DRAGERON DIABLOC', 'music/Untitled_REMIX_V.mp3')">Untitled REMIX V</div>
+                    <div class="track-item" onclick="showPlayer('Apocalypse Symphony', 'DRAGERON DIABLOC', 'music/Apocalypse Symphony.mp3')">Apocalypse Symphony</div>
+                    <div class="track-item" onclick="showPlayer('Apocalypse Symphony REMIX I', 'DRAGERON DIABLOC', 'music/Apocalypse Symphony REMIX I.mp3')">Apocalypse Symphony REMIX I</div>
+                    <div class="track-item" onclick="showPlayer('Apocalypse Symphony REMIX II', 'DRAGERON DIABLOC', 'music/Apocalypse Symphony REMIX II.mp3')">Apocalypse Symphony REMIX II</div>
+                    <div class="track-item" onclick="showPlayer('Apocalypse Symphony REMIX III', 'DRAGERON DIABLOC', 'music/Apocalypse Symphony REMIX III.mp3')">Apocalypse Symphony REMIX III</div>
+                    <div class="track-item" onclick="showPlayer('Chains of Steel', 'DRAGERON DIABLOC', 'music/Chains of Steel.mp3')">Chains of Steel</div>
+                    <div class="track-item" onclick="showPlayer('Chains of Steel REMIX', 'DRAGERON DIABLOC', 'music/Chains of Steel REMIX.mp3')">Chains of Steel REMIX</div>
+                    <div class="track-item" onclick="showPlayer('Clash of the Blades', 'DRAGERON DIABLOC', 'music/Clash of the Blades.mp3')">Clash of the Blades</div>
+                    <div class="track-item" onclick="showPlayer('Clash of the Blades REMIX', 'DRAGERON DIABLOC', 'music/Clash of the Blades REMIX.mp3')">Clash of the Blades REMIX</div>
+                    <div class="track-item" onclick="showPlayer('Dance of the Apocalypse', 'DRAGERON DIABLOC', 'music/Dance of the Apocalypse.mp3')">Dance of the Apocalypse</div>
+                    <div class="track-item" onclick="showPlayer('Dance of the Apocalypse REMIX', 'DRAGERON DIABLOC', 'music/Dance of the Apocalypse REMIX.mp3')">Dance of the Apocalypse REMIX</div>
+                    <div class="track-item" onclick="showPlayer('End of Days Symphony', 'DRAGERON DIABLOC', 'music/End of Days Symphony.mp3')">End of Days Symphony</div>
+                    <div class="track-item" onclick="showPlayer('End of Days Symphony REMIX', 'DRAGERON DIABLOC', 'music/End of Days Symphony REMIX.mp3')">End of Days Symphony REMIX</div>
+                    <div class="track-item" onclick="showPlayer('The Final Horizon', 'DRAGERON DIABLOC', 'music/The Final Horizon.mp3')">The Final Horizon</div>
+                    <div class="track-item" onclick="showPlayer('The Final Horizon REMIX', 'DRAGERON DIABLOC', 'music/The Final Horizon REMIX.mp3')">The Final Horizon REMIX</div>
+                    <div class="track-item" onclick="showPlayer('Eternal Wars', 'DRAGERON DIABLOC', 'music/Eternal Wars.mp3')">Eternal Wars</div>
+                    <div class="track-item" onclick="showPlayer('Eternal Wars REMIX I', 'DRAGERON DIABLOC', 'music/Eternal Wars REMIX I.mp3')">Eternal Wars REMIX I</div>
+                    <div class="track-item" onclick="showPlayer('Eternal Wars REMIX II', 'DRAGERON DIABLOC', 'music/Eternal Wars REMIX II.mp3')">Eternal Wars REMIX II</div>
+                    <div class="track-item" onclick="showPlayer('Eternal Wars REMIX III', 'DRAGERON DIABLOC', 'music/Eternal Wars REMIX III.mp3')">Eternal Wars REMIX III</div>
+                    <div class="track-item" onclick="showPlayer('Eternal Wars REMIX IV', 'DRAGERON DIABLOC', 'music/Eternal Wars REMIX IV.mp3')">Eternal Wars REMIX IV</div>
+                    <div class="track-item" onclick="showPlayer('Eternal Wars REMIX V', 'DRAGERON DIABLOC', 'music/Eternal Wars REMIX V.mp3')">Eternal Wars REMIX V</div>
+                    <div class="track-item" onclick="showPlayer('Detective', 'DRAGERON DIABLOC', 'music/Detective.mp3')">Detective</div>
+                    <div class="track-item" onclick="showPlayer('Damn-House-Good-Ending', 'DRAGERON DIABLOC', 'music/Damn-House-Good-Ending.mp3')">Damn-House-Good-Ending</div>
+                    <div class="track-item" onclick="showPlayer('PRISON-BREAK', 'DRAGERON DIABLOC', 'music/PRISON-BREAK.mp3')">PRISON-BREAK</div>
+                    <div class="track-item" onclick="showPlayer('INTRO-MIX', 'DRAGERON DIABLOC', 'music/INTRO-MIX.mp3')">INTRO-MIX</div>
+                    <div class="track-item" onclick="showPlayer('MIRAGE', 'DRAGERON DIABLOC', 'music/MIRAGE.mp3')">MIRAGE</div>
+                    <div class="track-item" onclick="showPlayer('Day', 'DRAGERON DIABLOC', 'music/Day.mp3')">Day</div>
+                    <div class="track-item" onclick="showPlayer('FATAL FATE', 'DRAGERON DIABLOC', 'music/FATAL FATE.mp3')">FATAL FATE</div>
+                    <div class="track-item" onclick="showPlayer('Wat Flow', 'DRAGERON DIABLOC', 'music/Wat Flow.mp3')">Wat Flow</div>
                 </div>
             </div>
-            
-            <!-- Плейлист 2 -->
+                        <!-- Плейлист 2 -->
             <div class="playlist-card" onclick="togglePlaylist(this)">
                 <img src="https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Epic Symphonies" class="playlist-cover">
                 <div class="playlist-info">
