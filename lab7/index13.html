@@ -3,77 +3,303 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мой музыкальный альбом</title>
+    <title>Музыкальный портал</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+        /* Основные стили */
+        * {
             margin: 0;
-            padding: 20px;
-            color: #333;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        .album {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        
+        body {
+            background-color: #121212;
+            color: #fff;
+            overflow-x: hidden;
         }
-        .track {
-            padding: 10px;
-            border-bottom: 1px solid #eee;
+        
+        /* Главный экран */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
             display: flex;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
+            text-align: center;
+            padding: 0 20px;
         }
-        audio {
-            width: 100%;
-            margin-top: 5px;
+        
+        .hero-content {
+            max-width: 800px;
         }
-        .cover {
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        
+        .artist-image {
             width: 200px;
             height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #fff;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #1DB954;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #1ed760;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Секция плейлистов */
+        .playlists {
+            padding: 80px 20px;
+            background-color: #181818;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+        }
+        
+        .playlist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .playlist-card {
+            background: #282828;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .playlist-card:hover {
+            background: #383838;
+            transform: translateY(-10px);
+        }
+        
+        .playlist-cover {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .playlist-info {
+            padding: 20px;
+        }
+        
+        .playlist-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .playlist-description {
+            color: #b3b3b3;
+            font-size: 0.9rem;
+        }
+        
+        /* Аудиоплеер */
+        .player-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #282828;
+            padding: 20px;
+            display: none;
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+        }
+        
+        .player-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .player-cover {
+            width: 60px;
+            height: 60px;
             object-fit: cover;
             border-radius: 5px;
-            margin: 0 auto 20px;
-            display: block;
         }
-        h1, h2 {
-            text-align: center;
+        
+        .player-info {
+            flex-grow: 1;
+        }
+        
+        .player-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .player-artist {
+            color: #b3b3b3;
+            font-size: 0.9rem;
+        }
+        
+        audio {
+            width: 100%;
+            max-width: 600px;
+        }
+        
+        .close-player {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin-left: 20px;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .player-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            audio {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="album">
-        <!-- Обложка альбома (замените на свою) -->
-        <img src="https://via.placeholder.com/200" alt="Обложка альбома" class="cover">
-        
-        <h1>Название альбома</h1>
-        <h2>Исполнитель</h2>
-        
-        <!-- Трек 1 -->
-        <div class="track">
-            <div style="flex-grow: 1;">
-                <strong>1. Название трека 1</strong>
-                <audio controls>
-                    <source src="music/track1.mp3" type="audio/mpeg">
-                    Ваш браузер не поддерживает аудио элемент.
-                </audio>
+    <!-- Главный экран -->
+    <section class="hero">
+        <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Музыкант" class="artist-image">
+        <div class="hero-content">
+            <h1>Добро пожаловать в мой мир</h1>
+            <p>Откройте для себя мою музыку и уникальные плейлисты</p>
+            <a href="#playlists" class="btn">Смотреть плейлисты</a>
+        </div>
+    </section>
+    
+    <!-- Секция плейлистов -->
+    <section class="playlists" id="playlists">
+        <h2 class="section-title">Мои плейлисты</h2>
+        <div class="playlist-grid">
+            <!-- Плейлист 1 -->
+            <div class="playlist-card" onclick="showPlayer('Летние хиты', 'Разные исполнители', 'music/summer.mp3', 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Летние хиты" class="playlist-cover">
+                <div class="playlist-info">
+                    <h3 class="playlist-title">Летние хиты</h3>
+                    <p class="playlist-description">Лучшие треки для летнего настроения</p>
+                </div>
+            </div>
+            
+            <!-- Плейлист 2 -->
+            <div class="playlist-card" onclick="showPlayer('Романтическая коллекция', 'Разные исполнители', 'music/romantic.mp3', 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">
+                <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Романтическая коллекция" class="playlist-cover">
+                <div class="playlist-info">
+                    <h3 class="playlist-title">Романтическая коллекция</h3>
+                    <p class="playlist-description">Треки для особых моментов</p>
+                </div>
+            </div>
+            
+            <!-- Плейлист 3 -->
+            <div class="playlist-card" onclick="showPlayer('Энергичные биты', 'Разные исполнители', 'music/energy.mp3', 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">
+                <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Энергичные биты" class="playlist-cover">
+                <div class="playlist-info">
+                    <h3 class="playlist-title">Энергичные биты</h3>
+                    <p class="playlist-description">Зарядитесь энергией</p>
+                </div>
+            </div>
+            
+            <!-- Плейлист 4 -->
+            <div class="playlist-card" onclick="showPlayer('Расслабляющие мелодии', 'Разные исполнители', 'music/chill.mp3', 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">
+                <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Расслабляющие мелодии" class="playlist-cover">
+                <div class="playlist-info">
+                    <h3 class="playlist-title">Расслабляющие мелодии</h3>
+                    <p class="playlist-description">Для отдыха и релаксации</p>
+                </div>
             </div>
         </div>
-        
-        <!-- Трек 2 -->
-        <div class="track">
-            <div style="flex-grow: 1;">
-                <strong>2. Название трека 2</strong>
-                <audio controls>
-                    <source src="music/track2.mp3" type="audio/mpeg">
-                    Ваш браузер не поддерживает аудио элемент.
-                </audio>
+    </section>
+    
+    <!-- Аудиоплеер -->
+    <div class="player-container" id="player">
+        <div class="player-content">
+            <img src="" alt="Обложка" class="player-cover" id="player-cover">
+            <div class="player-info">
+                <div class="player-title" id="player-title">Название трека</div>
+                <div class="player-artist" id="player-artist">Исполнитель</div>
             </div>
+            <audio controls id="audio-player">
+                <source src="" type="audio/mpeg">
+                Ваш браузер не поддерживает аудио элемент.
+            </audio>
+            <button class="close-player" onclick="hidePlayer()">×</button>
         </div>
-        
-        <!-- Добавьте больше треков по аналогии -->
     </div>
+    
+    <script>
+        // Показать плеер с выбранным треком
+        function showPlayer(title, artist, audioSrc, coverSrc) {
+            document.getElementById('player-title').textContent = title;
+            document.getElementById('player-artist').textContent = artist;
+            document.getElementById('player-cover').src = coverSrc;
+            
+            const audioPlayer = document.getElementById('audio-player');
+            audioPlayer.src = audioSrc;
+            audioPlayer.load();
+            
+            document.getElementById('player').style.display = 'block';
+        }
+        
+        // Скрыть плеер
+        function hidePlayer() {
+            document.getElementById('player').style.display = 'none';
+            const audioPlayer = document.getElementById('audio-player');
+            audioPlayer.pause();
+        }
+        
+        // Прокрутка к плейлистам при нажатии на кнопку
+        document.querySelector('.btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
 </body>
 </html>
