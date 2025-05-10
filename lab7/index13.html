@@ -220,8 +220,8 @@
         }
         
         .player-cover {
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
             object-fit: cover;
             border-radius: 5px;
         }
@@ -317,31 +317,30 @@
                     <div class="track-item" onclick="showPlayer('Untitled REMIX V', 'DRAGERON DIABLOC', 'music/Untitled REMIX V.mp3', 'https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">Untitled REMIX V</div>
                 </div>
             </div>
-            
             <!-- Плейлист 2 -->
-            <div class="playlist-card" onclick="showPlayer('Symphony', 'DRAGERON DIABLOC', 'music/Symphony.mp3', 'https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">
-                <img src="https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Dying Galaxies & Fallen Worlds" class="playlist-cover">
+            <div class="playlist-card" onclick="showPlayer('Symphony of the Fallen', 'DRAGERON DIABLOC', 'music/Symphony.mp3', 'https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">
+                <img src="https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Symphony of the Fallen" class="playlist-cover">
                 <div class="playlist-info">
-                    <h3 class="playlist-title">Dying Galaxies & Fallen Worlds</h3>
-                    <p class="playlist-description">Symphony, hony</p>
+                    <h3 class="playlist-title">Symphony of the Fallen</h3>
+                    <p class="playlist-description">Трагическая симфония падших миров</p>
                 </div>
             </div>
             
             <!-- Плейлист 3 -->
-            <div class="playlist-card" onclick="showPlayer('Sy', 'DRAGERON DIABLOC', 'music/Sy.mp3', 'https://images.unsplash.com/photo-1454789548928-9efd52dc4031?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">
-                <img src="https://images.unsplash.com/photo-1454789548928-9efd52dc4031?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Holy War" class="playlist-cover">
+            <div class="playlist-card" onclick="showPlayer('Holy War Anthem', 'DRAGERON DIABLOC', 'music/Sy.mp3', 'https://images.unsplash.com/photo-1454789548928-9efd52dc4031?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">
+                <img src="https://images.unsplash.com/photo-1454789548928-9efd52dc4031?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Holy War Anthem" class="playlist-cover">
                 <div class="playlist-info">
-                    <h3 class="playlist-title">Holy War</h3>
-                    <p class="playlist-description">Sy, ho</p>
+                    <h3 class="playlist-title">Holy War Anthem</h3>
+                    <p class="playlist-description">Гимн священной войны</p>
                 </div>
             </div>
             
             <!-- Плейлист 4 -->
-            <div class="playlist-card" onclick="showPlayer('hoR', 'DRAGERON DIABLOC', 'music/hoR.mp3', 'https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">
-                <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="THE GOLDEN YEARS" class="playlist-cover">
+            <div class="playlist-card" onclick="showPlayer('Golden Years Overture', 'DRAGERON DIABLOC', 'music/hoR.mp3', 'https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80')">
+                <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Golden Years Overture" class="playlist-cover">
                 <div class="playlist-info">
-                    <h3 class="playlist-title">THE GOLDEN YEARS</h3>
-                    <p class="playlist-description">hoR, hIy</p>
+                    <h3 class="playlist-title">Golden Years Overture</h3>
+                    <p class="playlist-description">Увертюра золотых лет</p>
                 </div>
             </div>
         </div>
@@ -350,7 +349,7 @@
     <!-- Аудиоплеер -->
     <div class="player-container" id="player">
         <div class="player-content">
-            <img src="" alt="Обложка" class="player-cover" id="player-cover">
+            <img src="" alt="Обложка трека" class="player-cover" id="player-cover">
             <div class="player-info">
                 <div class="player-title" id="player-title">Название трека</div>
                 <div class="player-artist" id="player-artist">DRAGERON DIABLOC</div>
@@ -369,12 +368,16 @@
             document.getElementById('player-title').textContent = title;
             document.getElementById('player-artist').textContent = artist;
             document.getElementById('player-cover').src = coverSrc;
+            document.getElementById('player-cover').alt = title + " cover";
             
             const audioPlayer = document.getElementById('audio-player');
             audioPlayer.src = audioSrc;
             audioPlayer.load();
             
             document.getElementById('player').style.display = 'block';
+            
+            // Автовоспроизведение при открытии плеера
+            audioPlayer.play().catch(e => console.log("Автовоспроизведение не разрешено:", e));
         }
         
         // Скрыть плеер
