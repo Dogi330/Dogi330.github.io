@@ -3,110 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Музыкальный плеер</title>
+    <title>Музыкальный плеер с обложкой</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #222;
-            color: white;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
             flex-direction: column;
+            align-items: center;
             padding: 20px;
+            background-color: #f5f5f5;
         }
         .player {
-            background: #333;
-            border-radius: 15px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-            padding: 25px;
-            text-align: center;
-            max-width: 320px;
-            width: 100%;
-        }
-        .cover-container {
-            width: 200px;
-            height: 200px;
-            margin: 0 auto 15px;
+            background: white;
             border-radius: 10px;
-            overflow: hidden;
-            background: #444;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            width: 300px;
+            text-align: center;
         }
         #cover {
-            max-width: 100%;
-            max-height: 100%;
+            width: 200px;
+            height: 200px;
             object-fit: cover;
-        }
-        .title {
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        .artist {
-            color: #aaa;
-            margin-bottom: 15px;
-        }
-        audio {
-            width: 100%;
-            margin: 15px 0;
-        }
-        .controls {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-        button {
-            background: #4CAF50;
-            color: white;
-            border: none;
-            padding: 8px 15px;
             border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
         }
-        button:hover {
-            background: #45a049;
+        #track-info {
+            margin-bottom: 15px;
+        }
+        #audio {
+            width: 100%;
+            margin-top: 10px;
         }
         select {
             width: 100%;
             padding: 8px;
+            margin-bottom: 15px;
             border-radius: 5px;
-            margin-bottom: 10px;
-            background: #444;
-            color: white;
-            border: 1px solid #555;
+            border: 1px solid #ddd;
         }
     </style>
 </head>
 <body>
     <div class="player">
-        <div class="cover-container">
-            <img id="cover" src="placeholder.jpg" alt="Обложка трека">
+        <img id="cover" src="placeholder.jpg" alt="Обложка">
+        <div id="track-info">
+            <div id="title">Выберите трек</div>
+            <div id="artist"></div>
         </div>
-        <div class="title" id="title">Название трека</div>
-        <div class="artist" id="artist">Исполнитель</div>
         
         <select id="track-selector">
-            <option value="">Выберите трек</option>
-            <!-- Треки будут загружены через JS -->
+            <option value="">-- Выберите трек --</option>
+            <option value="music/трек1.mp3">Трек 1</option>
+            <option value="music/трек2.mp3">Трек 2</option>
         </select>
         
-        <audio id="audio" controls>
-            Ваш браузер не поддерживает аудио.
-        </audio>
-        
-        <div class="controls">
-            <button onclick="document.getElementById('audio').play()">▶️ Воспроизвести</button>
-            <button onclick="document.getElementById('audio').pause()">⏸️ Пауза</button>
-        </div>
+        <audio id="audio" controls></audio>
     </div>
 
+    <!-- Подключаем библиотеку -->
+    <script src="https://unpkg.com/music-metadata-browser/dist/music-metadata-browser.min.js"></script>
+    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const audio = document.getElementById('audio');
@@ -115,68 +73,41 @@
             const artist = document.getElementById('artist');
             const trackSelector = document.getElementById('track-selector');
             
-            // Список треков (можно заменить на автоматическое сканирование папки, если используется сервер)
-            const tracks = [
-                { name: "ГИМН МЕЧЕЙ", file: "music/hymn-mechey.mp3" },
-                { name: "Другой трек", file: "music/another-track.mp3" },
-                // Добавьте другие треки вручную или автоматически (см. пояснения ниже)
-            ];
-            
-            // Заполняем выпадающий список
-            tracks.forEach(track => {
-                const option = document.createElement('option');
-                option.value = track.file;
-                option.textContent = track.name;
-                trackSelector.appendChild(option);
-            });
-            
-            // При выборе трека загружаем его
-            trackSelector.addEventListener('change', function() {
-                const selectedTrack = this.value;
-                if (!selectedTrack) return;
+            // Обработчик выбора трека
+            trackSelector.addEventListener('change', async function() {
+                const filePath = this.value;
+                if (!filePath) return;
                 
-                audio.src = selectedTrack;
-                audio.load();
-                
-                // Пытаемся извлечь обложку и метаданные
-                fetch(selectedTrack)
-                    .then(response => response.blob())
-                    .then(blob => {
-                        const jsmediatags = window.jsmediatags;
-                        if (jsmediatags) {
-                            jsmediatags.read(blob, {
-                                onSuccess: function(tag) {
-                                    if (tag.tags.picture) {
-                                        const base64String = arrayBufferToBase64(tag.tags.picture.data);
-                                        cover.src = `data:${tag.tags.picture.format};base64,${base64String}`;
-                                    }
-                                    if (tag.tags.title) title.textContent = tag.tags.title;
-                                    if (tag.tags.artist) artist.textContent = tag.tags.artist;
-                                },
-                                onError: function(error) {
-                                    console.error('Ошибка чтения тегов:', error);
-                                    title.textContent = trackSelector.options[trackSelector.selectedIndex].text;
-                                    artist.textContent = "Неизвестный исполнитель";
-                                }
-                            });
-                        }
-                    });
-            });
-            
-            // Вспомогательная функция для конвертации ArrayBuffer в Base64
-            function arrayBufferToBase64(buffer) {
-                let binary = '';
-                const bytes = new Uint8Array(buffer);
-                for (let i = 0; i < bytes.byteLength; i++) {
-                    binary += String.fromCharCode(bytes[i]);
+                try {
+                    // Загружаем файл
+                    const response = await fetch(filePath);
+                    const blob = await response.blob();
+                    
+                    // Парсим метаданные
+                    const metadata = await musicMetadata.parseBlob(blob);
+                    
+                    // Устанавливаем аудио
+                    audio.src = URL.createObjectURL(blob);
+                    
+                    // Отображаем обложку
+                    if (metadata.common.picture && metadata.common.picture.length > 0) {
+                        const picture = metadata.common.picture[0];
+                        const blob = new Blob([picture.data], { type: picture.format });
+                        cover.src = URL.createObjectURL(blob);
+                    } else {
+                        cover.src = 'placeholder.jpg';
+                    }
+                    
+                    // Отображаем метаданные
+                    title.textContent = metadata.common.title || filePath.split('/').pop();
+                    artist.textContent = metadata.common.artist || 'Неизвестный исполнитель';
+                    
+                } catch (error) {
+                    console.error('Ошибка:', error);
+                    alert('Не удалось загрузить трек');
                 }
-                return window.btoa(binary);
-            }
+            });
         });
     </script>
-    
-    <!-- Подключаем библиотеку для чтения ID3-тегов -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.7/jsmediatags.min.js"></script>
 </body>
 </html>
-
