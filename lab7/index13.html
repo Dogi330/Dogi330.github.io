@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DRAGERON DIABLOC - Official Music</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.7/jsmediatags.min.js"></script>
-    <link rel="icon" type="image/png" href=".//img/favicon-16x16.png">
+    <link rel="icon" type="image/png" href="./img/favicon-16x16.png">
     <style>
         /* Основные стили */
         * {
@@ -237,6 +237,7 @@
             display: none;
             box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
             z-index: 1000;
+            transition: all 0.3s ease;
         }
         
         .light-theme .player-container {
@@ -348,6 +349,61 @@
             color: #1DB954;
         }
         
+        /* Стили для полноэкранного режима */
+        .player-container.fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 2000;
+            background: #121212;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+        }
+        
+        .player-container.fullscreen .player-content {
+            flex-direction: column;
+            align-items: center;
+            max-width: 100%;
+            text-align: center;
+        }
+        
+        .player-container.fullscreen .player-cover {
+            width: 300px;
+            height: 300px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+        }
+        
+        .player-container.fullscreen audio {
+            width: 80%;
+            max-width: 800px;
+        }
+        
+        .player-container.fullscreen .close-player {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        
+        .light-theme .player-container.fullscreen {
+            background: #f5f5f5;
+        }
+        
+        /* Визуализатор аудио */
+        #visualizer {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
         /* Адаптивность */
         @media (max-width: 768px) {
             .hero h1 {
@@ -361,6 +417,11 @@
             
             audio {
                 width: 100%;
+            }
+            
+            .player-container.fullscreen .player-cover {
+                width: 200px;
+                height: 200px;
             }
         }
     </style>
@@ -387,16 +448,6 @@
         <div class="search-container">
             <input type="text" class="search-input" id="searchInput" placeholder="Поиск треков и альбомов...">
         </div>
-
-<div class="player-content">
-    <!-- ... существующий код ... -->
-    <div style="display: flex; align-items: center;">
-        <button class="close-player" onclick="hidePlayer()">✕</button>
-        <a href="https://soundcloud.com/drageron-diabloc" target="_blank" style="color: white; margin-left: 20px; text-decoration: none;">
-            🌐 Сайт
-        </a>
-    </div>
-</div>
         
         <div class="playlist-grid">
             <!-- Альбом ELECTRONIC LEGENDS -->
@@ -645,6 +696,11 @@
         </div>
     </section>
 
+    </section>
+
+    <!-- Визуализатор аудио -->
+    <canvas id="visualizer"></canvas>
+
     <!-- Аудиоплеер -->
     <div class="player-container" id="player">
         <div class="player-content">
@@ -658,9 +714,13 @@
                         Ваш браузер не поддерживает аудио элемент.
                     </audio>
                     <button class="repeat-btn" id="repeatBtn" title="Повтор">🔁</button>
+                    <button id="fullscreenBtn" title="Полноэкранный режим" style="background: none; border: none; color: #b3b3b3; cursor: pointer; font-size: 1rem;">⛶</button>
                 </div>
             </div>
-            <button class="close-player" onclick="hidePlayer()">✕</button>
+            <div style="display: flex; align-items: center;">
+                <a href="https://soundcloud.com/drageron-diabloc" target="_blank" style="color: white; margin-right: 20px; text-decoration: none;">🌐 SoundCloud</a>
+                <button class="close-player" onclick="hidePlayer()">✕</button>
+            </div>
         </div>
     </div>
 
@@ -681,13 +741,84 @@
             
             // Автовоспроизведение при открытии плеера
             audioPlayer.play().catch(e => console.log("Автовоспроизведение не разрешено:", e));
+            
+            // Инициализация визуализатора
+            initVisualizer();
         }
         
         // Скрыть плеер
         function hidePlayer() {
-            document.getElementById('player').style.display = 'none';
+            const player = document.getElementById('player');
+            player.classList.remove('fullscreen');
+            player.style.display = 'none';
+            document.getElementById('fullscreenBtn').textContent = '⛶';
             const audioPlayer = document.getElementById('audio-player');
             audioPlayer.pause();
+            document.getElementById('visualizer').style.display = 'none';
+        }
+        
+        // Полноэкранный режим
+        document.getElementById('fullscreenBtn').addEventListener('click', function() {
+            const player = document.getElementById('player');
+            player.classList.toggle('fullscreen');
+            
+            // Обновляем иконку
+            this.textContent = player.classList.contains('fullscreen') ? '✕' : '⛶';
+            
+            // Показываем визуализатор в полноэкранном режиме
+            document.getElementById('visualizer').style.display = 
+                player.classList.contains('fullscreen') ? 'block' : 'none';
+        });
+        
+        // Инициализация визуализатора аудио
+        function initVisualizer() {
+            const canvas = document.getElementById('visualizer');
+            const ctx = canvas.getContext('2d');
+            const audio = document.getElementById('audio-player');
+            
+            // Устанавливаем размеры canvas
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            const analyser = audioCtx.createAnalyser();
+            const source = audioCtx.createMediaElementSource(audio);
+            
+            source.connect(analyser);
+            analyser.connect(audioCtx.destination);
+            
+            analyser.fftSize = 256;
+            const bufferLength = analyser.frequencyBinCount;
+            const dataArray = new Uint8Array(bufferLength);
+            
+            function draw() {
+                requestAnimationFrame(draw);
+                
+                analyser.getByteFrequencyData(dataArray);
+                
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                const barWidth = (canvas.width / bufferLength) * 2.5;
+                let x = 0;
+                
+                for(let i = 0; i < bufferLength; i++) {
+                    const barHeight = dataArray[i] / 2;
+                    
+                    ctx.fillStyle = `rgb(${barHeight + 100}, 50, 50)`;
+                    ctx.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
+                    
+                    x += barWidth + 1;
+                }
+            }
+            
+            draw();
+            
+            // Обработка изменения размера окна
+            window.addEventListener('resize', function() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
         }
         
         // Прокрутка к плейлистам при нажатии на кнопку
