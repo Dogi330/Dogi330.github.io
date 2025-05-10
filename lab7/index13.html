@@ -194,6 +194,37 @@
             color: #666;
         }
         
+        /* Стили для списка треков */
+        .track-list {
+            display: none;
+            background: #383838;
+            padding: 10px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .light-theme .track-list {
+            background: #f0f0f0;
+        }
+        
+        .track-item {
+            padding: 10px;
+            border-bottom: 1px solid #484848;
+            cursor: pointer;
+        }
+        
+        .light-theme .track-item {
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .track-item:hover {
+            background: #484848;
+        }
+        
+        .light-theme .track-item:hover {
+            background: #e0e0e0;
+        }
+        
         /* Аудиоплеер */
         .player-container {
             position: fixed;
@@ -300,48 +331,56 @@
     
     <!-- Секция плейлистов -->
     <section class="playlists" id="playlists">
-        <h2 class="section-title">Альбомы</h2>
+        <h2 class="section-title">Плейлисты</h2>
         <div class="playlist-grid">
-            <!-- Плейлист 1 -->
+            <!-- Плейлист 1 - Collection of Times of Dreams -->
             <div class="playlist-card" onclick="togglePlaylist(this)">
                 <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Collection of Times of Dreams" class="playlist-cover">
                 <div class="playlist-info">
                     <h3 class="playlist-title">Collection of Times of Dreams</h3>
-                    <p class="playlist-description">21 трек · DRAGERON DIABLOC</p>
+                    <p class="playlist-description">Альбомы: Golden Years Overture и Untitled</p>
                 </div>
                 <div class="track-list">
-                    <div class="track-item" onclick="showPlayer('Untitled', 'DRAGERON DIABLOC', 'music/Untitled.mp3')">Untitled</div>
-                    <div class="track-item" onclick="showPlayer('Untitled REMIX I', 'DRAGERON DIABLOC', 'music/Untitled REMIX I.mp3')">Untitled REMIX I</div>
-                    <div class="track-item" onclick="showPlayer('Untitled REMIX II', 'DRAGERON DIABLOC', 'music/Untitled REMIX II.mp3')">Untitled REMIX II</div>
-                    <div class="track-item" onclick="showPlayer('Untitled REMIX III', 'DRAGERON DIABLOC', 'music/Untitled REMIX III.mp3')">Untitled REMIX III</div>
-                    <div class="track-item" onclick="showPlayer('Untitled REMIX IV', 'DRAGERON DIABLOC', 'music/Untitled REMIX IV.mp3')">Untitled REMIX IV</div>
-                    <div class="track-item" onclick="showPlayer('Untitled REMIX V', 'DRAGERON DIABLOC', 'music/Untitled REMIX V.mp3')">Untitled REMIX V</div>
+                    <!-- Альбом Golden Years Overture -->
+                    <div class="track-item" onclick="event.stopPropagation(); showPlayer('Golden Years Overture - Track 1', 'DRAGERON DIABLOC', 'music/GYO_Track1.mp3')">Golden Years Overture - Track 1</div>
+                    <div class="track-item" onclick="event.stopPropagation(); showPlayer('Golden Years Overture - Track 2', 'DRAGERON DIABLOC', 'music/GYO_Track2.mp3')">Golden Years Overture - Track 2</div>
+                    <div class="track-item" onclick="event.stopPropagation(); showPlayer('Golden Years Overture - Track 3', 'DRAGERON DIABLOC', 'music/GYO_Track3.mp3')">Golden Years Overture - Track 3</div>
+                    
+                    <!-- Альбом Untitled -->
+                    <div class="track-item" onclick="event.stopPropagation(); showPlayer('Untitled', 'DRAGERON DIABLOC', 'music/Untitled.mp3')">Untitled</div>
+                    <div class="track-item" onclick="event.stopPropagation(); showPlayer('Untitled REMIX I', 'DRAGERON DIABLOC', 'music/Untitled_REMIX_I.mp3')">Untitled REMIX I</div>
+                    <div class="track-item" onclick="event.stopPropagation(); showPlayer('Untitled REMIX II', 'DRAGERON DIABLOC', 'music/Untitled_REMIX_II.mp3')">Untitled REMIX II</div>
+                    <div class="track-item" onclick="event.stopPropagation(); showPlayer('Untitled REMIX III', 'DRAGERON DIABLOC', 'music/Untitled_REMIX_III.mp3')">Untitled REMIX III</div>
+                    <div class="track-item" onclick="event.stopPropagation(); showPlayer('Untitled REMIX IV', 'DRAGERON DIABLOC', 'music/Untitled_REMIX_IV.mp3')">Untitled REMIX IV</div>
+                    <div class="track-item" onclick="event.stopPropagation(); showPlayer('Untitled REMIX V', 'DRAGERON DIABLOC', 'music/Untitled_REMIX_V.mp3')">Untitled REMIX V</div>
                 </div>
             </div>
+            
             <!-- Плейлист 2 -->
-            <div class="playlist-card" onclick="showPlayer('Symphony of the Fallen', 'DRAGERON DIABLOC', 'music/Symphony.mp3')">
-                <img src="https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Symphony of the Fallen" class="playlist-cover">
+            <div class="playlist-card" onclick="togglePlaylist(this)">
+                <img src="https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Epic Symphonies" class="playlist-cover">
                 <div class="playlist-info">
-                    <h3 class="playlist-title">Symphony of the Fallen</h3>
-                    <p class="playlist-description">Трагическая симфония падших миров</p>
+                    <h3 class="playlist-title">Epic Symphonies</h3>
+                    <p class="playlist-description">Лучшие симфонические произведения</p>
+                </div>
+                <div class="track-list">
+                    <div class="track-item" onclick="event.stopPropagation(); showPlayer('Symphony of the Fallen', 'DRAGERON DIABLOC', 'music/Symphony.mp3')">Symphony of the Fallen</div>
+                    <div class="track-item" onclick="event.stopPropagation(); showPlayer('Dragon\'s Awakening', 'DRAGERON DIABLOC', 'music/Dragons_Awakening.mp3')">Dragon's Awakening</div>
+                    <div class="track-item" onclick="event.stopPropagation(); showPlayer('Celestial Battle', 'DRAGERON DIABLOC', 'music/Celestial_Battle.mp3')">Celestial Battle</div>
                 </div>
             </div>
             
             <!-- Плейлист 3 -->
-            <div class="playlist-card" onclick="showPlayer('Holy War Anthem', 'DRAGERON DIABLOC', 'music/Sy.mp3')">
-                <img src="https://images.unsplash.com/photo-1454789548928-9efd52dc4031?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Holy War Anthem" class="playlist-cover">
+            <div class="playlist-card" onclick="togglePlaylist(this)">
+                <img src="https://images.unsplash.com/photo-1454789548928-9efd52dc4031?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Battle Anthems" class="playlist-cover">
                 <div class="playlist-info">
-                    <h3 class="playlist-title">Holy War Anthem</h3>
-                    <p class="playlist-description">Гимн священной войны</p>
+                    <h3 class="playlist-title">Battle Anthems</h3>
+                    <p class="playlist-description">Гимны для великих битв</p>
                 </div>
-            </div>
-            
-            <!-- Плейлист 4 -->
-            <div class="playlist-card" onclick="showPlayer('Golden Years Overture', 'DRAGERON DIABLOC', 'music/hoR.mp3')">
-                <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Golden Years Overture" class="playlist-cover">
-                <div class="playlist-info">
-                    <h3 class="playlist-title">Golden Years Overture</h3>
-                    <p class="playlist-description">Увертюра золотых лет</p>
+                <div class="track-list">
+                    <div class="track-item" onclick="event.stopPropagation(); showPlayer('Holy War Anthem', 'DRAGERON DIABLOC', 'music/Holy_War_Anthem.mp3')">Holy War Anthem</div>
+                    <div class="track-item" onclick="event.stopPropagation(); showPlayer('Warrior\'s Call', 'DRAGERON DIABLOC', 'music/Warriors_Call.mp3')">Warrior's Call</div>
+                    <div class="track-item" onclick="event.stopPropagation(); showPlayer('Final Stand', 'DRAGERON DIABLOC', 'music/Final_Stand.mp3')">Final Stand</div>
                 </div>
             </div>
         </div>
@@ -449,7 +488,7 @@
             }
         });
 
-        // Функция для переключения отображения списка треков (если нужно)
+        // Функция для переключения отображения списка треков
         function togglePlaylist(element) {
             const trackList = element.querySelector('.track-list');
             if (trackList) {
