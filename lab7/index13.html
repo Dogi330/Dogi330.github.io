@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ГИМН МЕЧЕЙ</title>
+    <title>ГИМН МЕЧЕЙ - Аудиоплеер</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background-color: #222;
+            color: white;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -16,30 +17,46 @@
             flex-direction: column;
         }
         .player {
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            padding: 20px;
+            background: #333;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            padding: 25px;
             text-align: center;
             max-width: 300px;
         }
-        .cover {
+        .cover-container {
             width: 200px;
             height: 200px;
-            border-radius: 8px;
+            margin: 0 auto 15px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #444;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #cover {
+            max-width: 100%;
+            max-height: 100%;
             object-fit: cover;
-            margin-bottom: 15px;
         }
         .title {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: bold;
             margin-bottom: 10px;
+        }
+        .artist {
+            color: #aaa;
+            margin-bottom: 15px;
+        }
+        audio {
+            width: 100%;
+            margin: 15px 0;
         }
         .controls {
             display: flex;
             justify-content: center;
             gap: 10px;
-            margin-top: 15px;
         }
         button {
             background: #4CAF50;
@@ -53,20 +70,21 @@
         button:hover {
             background: #45a049;
         }
-        input[type="range"] {
-            width: 100%;
-            margin: 10px 0;
-        }
     </style>
 </head>
 <body>
     <div class="player">
-        <img src="https://via.placeholder.com/200" alt="Обложка ГИМН МЕЧЕЙ" class="cover" id="cover">
-        <div class="title">ГИМН МЕЧЕЙ</div>
+        <div class="cover-container">
+            <img id="cover" alt="Обложка трека">
+        </div>
+        <div class="title" id="title">ГИМН МЕЧЕЙ</div>
+        <div class="artist" id="artist">Исполнитель</div>
+        
         <audio id="audio" controls>
-            <source src="https://example.com/hymn-mechey.mp3" type="audio/mpeg">
-            Ваш браузер не поддерживает аудио элемент.
+            <source src="hymn-mechey.mp3" type="audio/mpeg">
+            Ваш браузер не поддерживает аудио.
         </audio>
+        
         <div class="controls">
             <button onclick="document.getElementById('audio').play()">▶️ Воспроизвести</button>
             <button onclick="document.getElementById('audio').pause()">⏸️ Пауза</button>
@@ -74,8 +92,53 @@
     </div>
 
     <script>
-        // Можно динамически загрузить обложку, если она есть в интернете
-        // document.getElementById('cover').src = "URL_ОБЛОЖКИ";
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = document.getElementById('audio');
+            const cover = document.getElementById('cover');
+            const title = document.getElementById('title');
+            const artist = document.getElementById('artist');
+            
+            // Загрузка файла и извлечение метаданных
+            fetch('hymn-mechey.mp3')
+                .then(response => response.blob())
+                .then(blob => {
+                    const url = URL.createObjectURL(blob);
+                    audio.src = url;
+                    
+                    // Используем jsmediatags для чтения ID3-тегов
+                    const jsmediatags = window.jsmediatags;
+                    if (jsmediatags) {
+                        jsmediatags.read(blob, {
+                            onSuccess: function(tag) {
+                                // Извлекаем обложку
+                                if (tag.tags.picture) {
+                                    const base64String = arrayBufferToBase64(tag.tags.picture.data);
+                                    cover.src = `data:${tag.tags.picture.format};base64,${base64String}`;
+                                }
+                                // Извлекаем название и исполнителя
+                                if (tag.tags.title) title.textContent = tag.tags.title;
+                                if (tag.tags.artist) artist.textContent = tag.tags.artist;
+                            },
+                            onError: function(error) {
+                                console.error('Ошибка чтения тегов:', error);
+                            }
+                        });
+                    }
+                });
+            
+            // Вспомогательная функция для конвертации ArrayBuffer в Base64
+            function arrayBufferToBase64(buffer) {
+                let binary = '';
+                const bytes = new Uint8Array(buffer);
+                for (let i = 0; i < bytes.byteLength; i++) {
+                    binary += String.fromCharCode(bytes[i]);
+                }
+                return window.btoa(binary);
+            }
+        });
     </script>
+    
+    <!-- Подключаем библиотеку для чтения ID3-тегов -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.7/jsmediatags.min.js"></script>
 </body>
 </html>
