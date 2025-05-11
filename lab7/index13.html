@@ -739,25 +739,24 @@
         </div>
     </section>
 
-    </section>
-
    <!-- Аудиоплеер с обновлённой разметкой -->
-    <div class="player-container" id="player">
-        <div class="player-content">
-            <img src="https://via.placeholder.com/300" alt="Обложка трека" class="player-cover" id="player-cover">
-            <div class="player-info">
-                <div class="player-title" id="player-title">Название трека</div>
-                <div class="player-artist" id="player-artist">Исполнитель</div>
-                
-                <audio controls id="audio-player">
-                    <source src="" type="audio/mpeg">
-                    Ваш браузер не поддерживает аудио элемент.
-                </audio>
-                
-                <div class="time-info">
-                    <span id="current-time">0:00</span>
-                    <span id="duration">0:00</span>
-                </div>
+<div class="player-container" id="player">
+    <div class="player-content">
+        <img src="https://via.placeholder.com/300" alt="Обложка трека" class="player-cover" id="player-cover">
+        <div class="player-info">
+            <div class="player-title" id="player-title">Название трека</div>
+            <div class="player-artist" id="player-artist">Исполнитель</div>
+            
+            <audio controls id="audio-player" preload="metadata">
+                <!-- Обязательно укажите реальный путь к аудиофайлу -->
+                <source src="путь/к/треку.mp3" type="audio/mpeg">
+                Ваш браузер не поддерживает аудио элемент.
+            </audio>
+            
+            <div class="time-info">
+                <span id="current-time">0:00</span>
+                <span id="duration">0:00</span>
+            </div>
                 
                 <div class="player-controls">
                     <button class="repeat-btn" id="repeatBtn" title="Повтор">🔁</button>
