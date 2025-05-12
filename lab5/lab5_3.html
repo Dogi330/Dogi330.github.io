@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <title>Использование inline-block при построении колонок</title>
+    <style>
+      .wrapper {
+        min-width: 1000px;
+        font-size: 0;
+        text-align: center;
+      }
+
+      .wrapper div {
+        display: inline-block;
+        vertical-align: top;
+        box-sizing: border-box;
+        font-size: 14px;
+      }
+
+      #left {
+        width: 200px;
+        background: #ccf;
+      }
+
+      #center {
+        width: 600px;
+        background: #cfc;
+      }
+
+      #right {
+        width: 200px;
+        background: #fcc;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div id="left">left<br />left<br />left<br />left<br />left</div>
+      <div id="center">
+        center text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text
+        text text text text text text text text text text text text text text
+        text text text text text text text text text text
+      </div>
+      <div id="right">right<br />right<br />right<br />right</div>
+    </div>
+  </body>
+</html>
