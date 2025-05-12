@@ -6,6 +6,8 @@
     <title>DRAGERON DIABLOC - Official Music</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.7/jsmediatags.min.js"></script>
     <link rel="icon" type="image/png" href="./img/favicon-16x16.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <style>
         /* Основные стили */
         * {
@@ -50,7 +52,57 @@
             background: rgba(255, 255, 255, 0.7);
             color: #333;
         }
+
+        /* Стили для логотипа и общей темы */
+        .diabloc-logo {
+            font-family: 'Arial Black', sans-serif;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ff0000;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+        }
         
+        .navbar {
+            background-color: #000 !important;
+            border-bottom: 1px solid #ff0000;
+        }
+        
+        .footer {
+            background-color: #000;
+            color: #fff;
+            padding: 2rem 0;
+            border-top: 1px solid #ff0000;
+        }
+        
+        .nav-link {
+            color: #fff !important;
+            transition: all 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: #ff0000 !important;
+            text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+        }
+        
+        .btn-diabloc {
+            background-color: #ff0000;
+            color: #000;
+            font-weight: bold;
+            border: none;
+        }
+        
+        .btn-diabloc:hover {
+            background-color: #cc0000;
+            color: #000;
+        }
+        
+        body {
+            background-color: #111;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+        }
+      
         /* Главный экран */
         .hero {
             height: 100vh;
@@ -470,6 +522,105 @@
     </style>
 </head>
 <body>
+    <!-- Шапка (верхняя навигация) -->
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <div class="quantum-star"></div>
+        Квантовая звезда
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Главная</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Технологии</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Решения</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Контакты</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- Основной контент (пример секции) -->
+<main>
+  <section class="hero-section">
+    <div class="container text-center">
+      <h1 class="display-4 fw-bold mb-4">Квантовые технологии будущего</h1>
+      <p class="lead mb-4">Инновационные решения для современного мира</p>
+      <a href="#" class="btn btn-primary btn-lg px-4 me-2">Узнать больше</a>
+      <a href="#" class="btn btn-outline-light btn-lg px-4">Демо-версия</a>
+    </div>
+  </section>
+  
+  <!-- Другие секции контента... -->
+</main>
+
+<!-- Подвал (нижняя часть) -->
+<footer class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 mb-4 mb-lg-0">
+        <div class="d-flex align-items-center mb-3">
+          <div class="quantum-star"></div>
+          <span class="h5 mb-0">Квантовая звезда</span>
+        </div>
+        <p class="small">Инновационные решения в области квантовых технологий и искусственного интеллекта.</p>
+      </div>
+      <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+        <h5 class="mb-3">Навигация</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="#" class="text-white text-decoration-none">Главная</a></li>
+          <li class="mb-2"><a href="#" class="text-white text-decoration-none">О нас</a></li>
+          <li class="mb-2"><a href="#" class="text-white text-decoration-none">Услуги</a></li>
+          <li class="mb-2"><a href="#" class="text-white text-decoration-none">Блог</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
+        <h5 class="mb-3">Решения</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2"><a href="#" class="text-white text-decoration-none">Квантовые вычисления</a></li>
+          <li class="mb-2"><a href="#" class="text-white text-decoration-none">ИИ-аналитика</a></li>
+          <li class="mb-2"><a href="#" class="text-white text-decoration-none">Кибербезопасность</a></li>
+        </ul>
+      </div>
+      <div class="col-lg-4">
+        <h5 class="mb-3">Контакты</h5>
+        <ul class="list-unstyled">
+          <li class="mb-2">Email: info@quantumstar.com</li>
+          <li class="mb-2">Телефон: +7 (123) 456-78-90</li>
+          <li class="mb-2">Адрес: Москва, Квантовый пр-т, 42</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="my-4 bg-secondary">
+    <div class="row">
+      <div class="col-md-6 text-center text-md-start">
+        <p class="small mb-0">© 2023 Квантовая звезда. Все права защищены.</p>
+      </div>
+      <div class="col-md-6 text-center text-md-end">
+        <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
+        <a href="#" class="text-white me-3"><i class="bi bi-linkedin"></i></a>
+        <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
     <!-- Кнопка смены темы -->
     <button class="theme-switcher" id="themeSwitcher">🌓</button>
     
